@@ -14,7 +14,7 @@ import contactImage from "./images/marcin-jozwiak-oh0DITWoHi4-unsplash 1.png";
 function App() {
   return (
     <>
-      <div className=" lg:container md:container max-sm:container font-[Inter] mx-auto pt-8">
+      <div className=" lg:container md:container max-sm:container  sm:container font-[Inter] mx-auto pt-8">
         <Header></Header>
       </div>
       <div className="relative mt-8 mb-14 max-sm:m-0">
@@ -31,7 +31,7 @@ function App() {
           efficiently
         </p>
       </div>
-      <div className="lg:container md:container max-sm:container text-[#262627] font-[Inter] mx-auto pt-8">
+      <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Inter] mx-auto pt-8">
         <div className="flex flex-col items-center mb-8">
           <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
           <p className="text-2xl font-semibold max-sm:text-lg">
@@ -121,19 +121,19 @@ function App() {
           <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
           <p className="text-2xl font-semibold max-sm:text-lg">About Us</p>
         </div>
-        <div className="flex items-center md:items-stretch justify-between lg:mb-14 max-sm:block">
-          <img src={about} className="lg:w-[50%] md:w-[58%]" />
-          <div className="md:w-[40%] lg:w-[45%]">
-            <p className="font-bold lg:text-2xl mb-8 md:mb-6 max-sm:mb-4 max-sm:mt-4 max-sm:text-lg">
+        <div className="flex items-center md:items-stretch justify-between lg:mb-14 max-sm:block sm:block ">
+          <img src={about} className="lg:w-[50%] md:w-[38%] sm:w-full" />
+          <div className="md:w-[40%] lg:w-[45%] ">
+            <p className="font-bold lg:text-2xl mb-8 md:mb-6 max-sm:mb-4 max-sm:mt-4 max-sm:text-lg sm:mb-4 sm:text-xl sm:mt-4">
               Solution for Logistics
             </p>
-            <p className="lg:mb-5 lg:text-base md:text-sm md:mb-4 max-sm:mb-4">
+            <p className="lg:mb-5 lg:text-base md:text-sm md:mb-4 max-sm:mb-4 sm:mb-4">
               At a Company, we're committed to ensuring that our customers
               receive their orders in a timely and cost-effective manner. That's
               why we take logistics very seriously and have developed an
               extensive logistics network to meet our customers' needs.
             </p>
-            <p className="lg:mb-5 lg:text-base  md:text-sm md:mb-4 max-sm:mb-4">
+            <p className="lg:mb-5 lg:text-base  md:text-sm md:mb-4 max-sm:mb-4 sm:mb-4">
               We work closely with a range of logistics partners to ensure that
               our products are shipped efficiently and safely to our customers
               around the world. Our logistics team has years of experience in
@@ -153,9 +153,9 @@ function App() {
         </div>
       </div>
       <div className=" back-image  py-7 mt-14">
-        <div className="lg:container md:container max-sm:container text-[#262627] font-[Inter] mx-auto pt-8">
+        <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Inter] mx-auto pt-8">
           <div className="flex justify-between max-sm:flex-col max-sm:order-1 ">
-            <div className="md:w-48% max-sm:order-2 max-sm:mt-6">
+            <div className="md:w-48% max-sm:order-2 max-sm:mt-6 sm:w-[45%]">
               <p className="font-semibold lg:text-3xl md:text-2xl text-white ">
                 Connect with Us Today for Expert <br></br> Industrial Solutions!
               </p>
@@ -239,28 +239,28 @@ function App() {
               </div>
             </div>
 
-            <div className="  md:w-2/4 max-sm:order-1">
+            <div className="  md:w-2/4 max-sm:order-1 sm:w-[48%]">
               <div className="lg:mb-8 md:w-full md:mb-4">
                 <input
                   type="text"
-                  className="lg:w-72 md:w-full md:mb-4 h-12 rounded-md lg:mr-8 md:mr-0 max-sm:w-full max-sm:mb-4"
+                  className="lg:w-72 md:w-full md:mb-4 h-12 rounded-md lg:mr-8 md:mr-0 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Name-Surname"
                 ></input>
                 <input
                   type="email"
-                  className="lg:w-72 h-12 md:w-full md:mb-0 rounded-md  max-sm:w-full max-sm:mb-4"
+                  className="lg:w-72 h-12 md:w-full md:mb-0 rounded-md  max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Email"
                 ></input>
               </div>
               <div className="lg:mb-8  md:mb-4 max-sm:w-full">
                 <input
                   type="text"
-                  className="lg:w-72 h-12 rounded-md lg:mr-8 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4"
+                  className="lg:w-72 h-12 rounded-md lg:mr-8 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Company"
                 ></input>
                 <input
                   type="tel"
-                  className="lg:w-72 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 "
+                  className="lg:w-72 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Phone"
                 ></input>
               </div>
@@ -276,8 +276,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className=" lg:container md:container max-sm:container font-[Inter] mx-auto pt-8 ">
-        <div className="bg-[#2B354B]  flex flex-col items-center w-3/5  mx-auto py-8 md:w-3/5 max-sm:w-full">
+      <div className=" lg:container md:container max-sm:container sm:container font-[Inter] mx-auto pt-8 ">
+        <div className="bg-[#2B354B]  flex flex-col items-center w-3/5  mx-auto py-8 md:w-3/5 max-sm:w-full sm:w-[80%]">
           <p className="font-semibold text-2xl mb-5 md:text-xl text-white max-sm:text-base">
             Lorem ipsum dolor sit amet consectetur
           </p>
@@ -291,7 +291,7 @@ function App() {
         </div>
       </div>
       <div className="bg-[#13151D] pb-10 ">
-        <div className=" lg:container md:container max-sm:container  font-[Inter] mx-auto pt-8">
+        <div className=" lg:container md:container max-sm:container sm:container  font-[Inter] mx-auto pt-8">
           <div className="h-12 w-32 bg-white flex max-sm:w-20 max-sm:h-10"></div>
           <div className="flex justify-between items-center max-sm:flex-col">
             <div className="flex items-end justify-between w-2/3 max-sm:w-full ">

@@ -11,16 +11,24 @@ function Header() {
   return (
     <>
       <div className=" flex justify-between items-center">
-        <img src="" alt="logo" className="w-32 h-12 max-sm:w-28  max-sm:h-8" />
+        <img src="" alt="logo" className="w-32 h-12 max-sm:w-28  max-sm:h-8 " />
 
         <div className="lg:flex md:flex justify-between items-center max-sm:hidden  sm:flex ">
-          <p className="w-32 font-medium text-[#9C422B] ">Platform</p>
-          <p className="w-32 font-medium text-[#9C422B] ">About</p>
-          <p className="w-32 font-medium text-[#9C422B] ">Contact</p>
-          <p className="w-32 font-medium text-[#9C422B] ">News</p>
+          <p className="lg:w-32 sm:w-[6rem] md:[7rem] font-medium text-[#9C422B] ">
+            Platform
+          </p>
+          <p className="lg:w-32   sm:w-[6rem] font-medium text-[#9C422B] ">
+            About
+          </p>
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] ">
+            Contact
+          </p>
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] ">
+            News
+          </p>
         </div>
 
-        <button className=" xs:hidden lg:block md:block w-[138px] h-10 rounded-md border-none bg-[#9C422B] max-sm:hidden sm:block text-white">
+        <button className=" xs:hidden lg:block md:block w-[138px] h-10 rounded-md border-none bg-[#9C422B] max-sm:hidden sm:block sm:w-28 text-white">
           Login
         </button>
         <button onClick={toggleMenu}>
