@@ -10,7 +10,7 @@ function Header() {
   };
   return (
     <>
-      <div className=" flex justify-between items-center">
+      <div className=" flex justify-between  items-center">
         <img src="" alt="logo" className="w-32 h-12 max-sm:w-28  max-sm:h-8 " />
 
         <div className="lg:flex md:flex justify-between items-center max-sm:hidden  sm:flex ">
@@ -28,13 +28,15 @@ function Header() {
           </p>
         </div>
 
-        <button className=" xs:hidden lg:block md:block w-[138px] h-10 rounded-md border-none bg-[#9C422B] max-sm:hidden sm:block sm:w-28 text-white">
+        <button className=" xs:hidden lg:inline-block md:block w-[138px] h-10 rounded-md border-none bg-[#9C422B] max-sm:hidden sm:block sm:w-28 text-white">
           Login
         </button>
-        <button onClick={toggleMenu}>
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden md:hidden  sm:hidden  "
+        >
           {" "}
           <svg
-            className="lg:hidden md:hidden  sm:hidden "
             width="32"
             height="32"
             viewBox="0 0 24 24"

@@ -121,9 +121,9 @@ function App() {
           <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
           <p className="text-2xl font-semibold max-sm:text-lg">About Us</p>
         </div>
-        <div className="flex items-center md:items-stretch justify-between lg:mb-14 max-sm:block sm:block ">
-          <img src={about} className="lg:w-[50%] md:w-[38%] sm:w-full" />
-          <div className="md:w-[40%] lg:w-[45%] ">
+        <div className="lg:flex items-center md:items-stretch justify-between lg:mb-14 max-sm:block sm:block md:flex ">
+          <img src={about} className="lg:w-[50%] md:w-[50%] sm:w-full" />
+          <div className="md:w-[48%] lg:w-[45%] ">
             <p className="font-bold lg:text-2xl mb-8 md:mb-6 max-sm:mb-4 max-sm:mt-4 max-sm:text-lg sm:mb-4 sm:text-xl sm:mt-4">
               Solution for Logistics
             </p>
@@ -240,27 +240,27 @@ function App() {
             </div>
 
             <div className="  md:w-2/4 max-sm:order-1 sm:w-[48%]">
-              <div className="lg:mb-8 md:w-full md:mb-4">
+              <div className="lg:mb-8 md:w-full md:mb-4 lg:flex ">
                 <input
                   type="text"
-                  className="lg:w-72 md:w-full md:mb-4 h-12 rounded-md lg:mr-8 md:mr-0 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
+                  className="lg:w-60 md:w-full md:mb-4 h-12 rounded-md lg:mr-5  md:mr-0 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Name-Surname"
                 ></input>
                 <input
                   type="email"
-                  className="lg:w-72 h-12 md:w-full md:mb-0 rounded-md  max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
+                  className="lg:w-60 h-12 md:w-full md:mb-0 rounded-md  max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Email"
                 ></input>
               </div>
               <div className="lg:mb-8  md:mb-4 max-sm:w-full">
                 <input
                   type="text"
-                  className="lg:w-72 h-12 rounded-md lg:mr-8 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
+                  className="lg:w-60 h-12 rounded-md lg:mr-5 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Company"
                 ></input>
                 <input
                   type="tel"
-                  className="lg:w-72 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
+                  className="lg:w-60 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Phone"
                 ></input>
               </div>
