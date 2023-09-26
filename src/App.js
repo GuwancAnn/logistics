@@ -14,10 +14,10 @@ import contactImage from "./images/marcin-jozwiak-oh0DITWoHi4-unsplash 1.png";
 function App() {
   return (
     <>
-      <div className=" lg:container md:container max-sm:container  sm:container font-[Inter] mx-auto pt-8">
+      <div className=" lg:container md:container max-sm:container  sm:container font-[Poppins] mx-auto pt-8">
         <Header></Header>
       </div>
-      <div className="relative mt-8 mb-14 max-sm:m-0">
+      <div className="relative mt-8 mb-14 max-sm:m-0 ">
         <img src={banner} alt="banner" className="w-full " />
         <p className="font-semibold lg:text-3xl left-20  text-white top-[20%] max-sm:text-base  max-sm:top-[8%] max-sm:left-5 absolute sm:text-2xl  ">
           Your Trusted Logistics
@@ -31,16 +31,20 @@ function App() {
           efficiently
         </p>
       </div>
-      <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Inter] mx-auto pt-8">
+      <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Poppins] mx-auto pt-8">
         <div className="flex flex-col items-center mb-8">
-          <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
           <p className="text-2xl font-semibold max-sm:text-lg">
             Our Logistics Services
-          </p>
+          </p>{" "}
+          <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
         </div>
         <div className="flex justify-between mb-6 max-sm:block">
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={transport} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex   max-sm:h-36 max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={transport}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:h-full max-sm:object-fill rounded-md"
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3 max-sm:text-base max-sm:py-0 ">
                 Transportation
@@ -52,8 +56,12 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={car} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center max-sm:h-36 max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={car}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:object-fill max-sm:h-full rounded-md "
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3 max-sm:text-base max-sm:py-0">
                 Warehousing
@@ -61,12 +69,16 @@ function App() {
               <p className=" text-sm max-sm:font-light">
                 Warehousing can help businesses to improve their inventory
                 management and ensure that they have the products they need
-                available when they need them.
+                available
               </p>
             </div>{" "}
           </div>
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={manager} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center  max-sm:h-36 max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={manager}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:object-fill max-sm:h-full rounded-md"
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3 max-sm:text-base max-sm:py-0">
                 Inventory management
@@ -74,14 +86,17 @@ function App() {
               <p className=" text-sm max-sm:font-light">
                 Inventory management can help businesses to reduce costs,
                 improve customer service, and make better decisions about their
-                supply chain.
               </p>
             </div>
           </div>
         </div>
         <div className="flex justify-between mb-14 max-sm:block">
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={order} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] max-sm:h-36 rounded-md max-sm:flex max-sm:items-start max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={order}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:object-fill max-sm:h-full"
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3  max-sm:text-base max-sm:py-0">
                 Order fulfillment
@@ -92,8 +107,12 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md  max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={forward} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] max-sm:h-36 rounded-md  max-sm:flex max-sm:items-start max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={forward}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:object-fill max-sm:h-full"
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3 max-sm:text-base max-sm:py-0">
                 Freight forwarding
@@ -104,8 +123,12 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md  max-sm:flex max-sm:items-center max-sm:w-full max-sm:p-2 max-sm:mb-5">
-            <img src={clearce} alt="" className="w-full max-sm:w-[40%]" />
+          <div className="p-5 bg-[#F5F5F5] w-[32%] rounded-md max-sm:h-36 max-sm:flex max-sm:items-start max-sm:w-full max-sm:p-2 max-sm:mb-5">
+            <img
+              src={clearce}
+              alt=""
+              className="w-full max-sm:w-[40%] max-sm:object-fill max-sm:h-full"
+            />
             <div className="max-sm:ml-2">
               <p className="font-medium text-xl py-3 max-sm:text-base max-sm:py-0">
                 Customs clearance
@@ -118,8 +141,8 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col items-center mb-8">
+          <p className="text-2xl font-semibold max-sm:text-lg">About Us</p>{" "}
           <hr className="border-[#9C422B] w-32 h-2 border-t-2"></hr>
-          <p className="text-2xl font-semibold max-sm:text-lg">About Us</p>
         </div>
         <div className="lg:flex items-center md:items-stretch justify-between lg:mb-14 max-sm:block sm:block md:flex ">
           <img src={about} className="lg:w-[50%] md:w-[50%] sm:w-full" />
@@ -153,7 +176,7 @@ function App() {
         </div>
       </div>
       <div className=" back-image  py-7 mt-14">
-        <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Inter] mx-auto pt-8">
+        <div className="lg:container md:container max-sm:container sm:container text-[#262627] font-[Poppins] mx-auto pt-8">
           <div className="flex justify-between max-sm:flex-col max-sm:order-1 ">
             <div className="md:w-48% max-sm:order-2 max-sm:mt-6 sm:w-[45%]">
               <p className="font-semibold lg:text-3xl md:text-2xl text-white ">
@@ -240,27 +263,27 @@ function App() {
             </div>
 
             <div className="  md:w-2/4 max-sm:order-1 sm:w-[48%]">
-              <div className="lg:mb-8 md:w-full md:mb-4 lg:flex ">
+              <div className=" md:w-full md:mb-4 lg:flex ">
                 <input
                   type="text"
-                  className="lg:w-60 md:w-full md:mb-4 h-12 rounded-md lg:mr-5  md:mr-0 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
+                  className="lg:w-3/6 md:w-full md:mb-4 h-12 rounded-md lg:mr-5  md:mr-0 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Name-Surname"
                 ></input>
                 <input
                   type="email"
-                  className="lg:w-60 h-12 md:w-full md:mb-0 rounded-md  max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
+                  className="lg:w-3/6 h-12 md:w-full md:mb-4 rounded-md  max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Email"
                 ></input>
               </div>
-              <div className="lg:mb-8  md:mb-4 max-sm:w-full">
+              <div className=" lg:flex md:mb-4 max-sm:w-full">
                 <input
                   type="text"
-                  className="lg:w-60 h-12 rounded-md lg:mr-5 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
+                  className="lg:w-3/6 h-12 rounded-md lg:mr-5 md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4"
                   placeholder="Company"
                 ></input>
                 <input
                   type="tel"
-                  className="lg:w-60 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
+                  className="lg:w-3/6 h-12 rounded-md md:w-full md:mb-4 max-sm:w-full max-sm:mb-4 sm:w-full sm:mb-4 "
                   placeholder="Phone"
                 ></input>
               </div>
@@ -276,8 +299,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className=" lg:container md:container max-sm:container sm:container font-[Inter] mx-auto pt-8 ">
-        <div className="bg-[#2B354B]  flex flex-col items-center w-3/5  mx-auto py-8 md:w-3/5 max-sm:w-full sm:w-[80%]">
+      <div className=" lg:container md:container max-sm:container sm:container font-[Poppins] mx-auto pt-8 ">
+        <div className="bg-[#2B354B]  flex flex-col items-center w-3/5  mx-auto py-8 md:w-3/5 max-sm:w-full sm:w-full">
           <p className="font-semibold text-2xl mb-5 md:text-xl text-white max-sm:text-base">
             Lorem ipsum dolor sit amet consectetur
           </p>
@@ -291,9 +314,9 @@ function App() {
         </div>
       </div>
       <div className="bg-[#13151D] pb-10 ">
-        <div className=" lg:container md:container max-sm:container sm:container  font-[Inter] mx-auto pt-8">
+        <div className=" lg:container md:container max-sm:container sm:container  font-[Poppins] mx-auto pt-8">
           <div className="h-12 w-32 bg-white flex max-sm:w-20 max-sm:h-10"></div>
-          <div className="flex justify-between items-center max-sm:flex-col">
+          <div className="flex justify-between items-end max-sm:items-center max-sm:flex-col">
             <div className="flex items-end justify-between w-2/3 max-sm:w-full ">
               <p className="text-white">Privacy policy</p>
               <div className="flex text-white flex-col">
@@ -354,7 +377,7 @@ function App() {
         </div>
       </div>{" "}
       <div className="h-9 flex items-center flex-col justify-center bg-white">
-        <p className="text-[#13151D] text-center">
+        <p className="text-[#13151D] text-center max-sm:text-xs">
           © 2023 Company. All rights reserved.
         </p>
       </div>

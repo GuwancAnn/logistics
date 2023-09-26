@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,24 +6,36 @@ function Header() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     console.log(true);
-    // screen.current.style.display = "block";
   };
+  useEffect(() => {
+    const checkResize = () => {
+      // Close the menu if window width is greater than md breakpoint
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", checkResize);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener("resize", checkResize);
+  }, []);
   return (
     <>
       <div className=" flex justify-between  items-center">
         <img src="" alt="logo" className="w-32 h-12 max-sm:w-28  max-sm:h-8 " />
 
         <div className="lg:flex md:flex justify-between items-center max-sm:hidden  sm:flex ">
-          <p className="lg:w-32 sm:w-[6rem] md:[7rem] font-medium text-[#9C422B] ">
+          <p className="lg:w-32 sm:w-[6rem] md:[7rem] font-medium text-[#9C422B] lg:text-xl ">
             Platform
           </p>
-          <p className="lg:w-32   sm:w-[6rem] font-medium text-[#9C422B] ">
+          <p className="lg:w-32   sm:w-[6rem] font-medium text-[#9C422B] lg:text-xl">
             About
           </p>
-          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] ">
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] lg:text-xl ">
             Contact
           </p>
-          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] ">
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B]  lg:text-xl">
             News
           </p>
         </div>
@@ -35,7 +47,6 @@ function Header() {
           onClick={toggleMenu}
           className="lg:hidden md:hidden  sm:hidden  "
         >
-          {" "}
           <svg
             width="32"
             height="32"
