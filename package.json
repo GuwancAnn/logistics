@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.26.0",
@@ -21,7 +22,10 @@
     "react-pdf": "^7.3.3",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
+    "recharts": "^2.8.0",
     "smart-webcomponents-react": "^16.0.1",
+    "tw-elements": "^1.0.0",
+    "tw-elements-react": "^1.0.0-alpha1",
     "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },

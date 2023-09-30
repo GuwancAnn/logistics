@@ -292,7 +292,7 @@ function App() {
                 rows={25}
                 className="w-full h-64 p-4 rounded-md"
               ></textarea>
-              <button className="bg-[#9C422B] w-full text-white rounded-md h-12 ">
+              <button className="bg-[#9C422B] w-full hover:bg-[#B8543A] text-white text-lg rounded-md h-12 ">
                 Send
               </button>
             </div>
@@ -308,7 +308,7 @@ function App() {
             Lorem ipsum dolor sit amet consectetur. Senectus quam nibh accumsan
             ac egestas id odio enim aliquam.
           </p>
-          <button className="bg-[#9C422B] text-white w-44 h-12 rounded-md text-xl max-sm:w-28 max-sm:text-sm">
+          <button className="bg-[#9C422B] hover:bg-[#B8543A] text-white w-44 h-12 rounded-md text-lg max-sm:w-28 max-sm:text-sm">
             Book Now
           </button>
         </div>

@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const screen = useRef();
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     console.log(true);
@@ -20,27 +20,33 @@ function Header() {
     // Cleanup function to remove the event listener
     return () => window.removeEventListener("resize", checkResize);
   }, []);
+  const LoginBtn = () => {
+    navigate("/login");
+  };
   return (
     <>
       <div className=" flex justify-between  items-center">
         <img src="" alt="logo" className="w-32 h-12 max-sm:w-28  max-sm:h-8 " />
 
-        <div className="lg:flex md:flex justify-between items-center max-sm:hidden  sm:flex ">
-          <p className="lg:w-32 sm:w-[6rem] md:[7rem] font-medium text-[#9C422B] lg:text-xl ">
+        <div className="lg:flex md:flex justify-between items-center max-sm:hidden  sm:flex  ">
+          <p className="lg:w-32 sm:w-[6rem] md:[7rem] font-medium text-[#9C422B] hover:text-[#B8543A] cursor-pointer lg:text-xl ">
             Platform
           </p>
-          <p className="lg:w-32   sm:w-[6rem] font-medium text-[#9C422B] lg:text-xl">
+          <p className="lg:w-32 hover:text-[#B8543A] cursor-pointer  sm:w-[6rem] font-medium text-[#9C422B] lg:text-xl">
             About
           </p>
-          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B] lg:text-xl ">
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem]  hover:text-[#B8543A] cursor-pointer font-medium text-[#9C422B] lg:text-xl ">
             Contact
           </p>
-          <p className="lg:w-32 md:[7rem] sm:w-[6rem] font-medium text-[#9C422B]  lg:text-xl">
+          <p className="lg:w-32 md:[7rem] sm:w-[6rem] hover:text-[#B8543A] cursor-pointer font-medium text-[#9C422B]  lg:text-xl">
             News
           </p>
         </div>
 
-        <button className=" xs:hidden lg:inline-block md:block w-[138px] h-10 rounded-md border-none bg-[#9C422B] max-sm:hidden sm:block sm:w-28 text-white">
+        <button
+          onClick={LoginBtn}
+          className=" xs:hidden lg:inline-block md:block w-[138px] lg:w-40 h-10 rounded-md border-none bg-[#9C422B] hover:bg-[#B8543A]  max-sm:hidden sm:block sm:w-28 text-white"
+        >
           Login
         </button>
         <button

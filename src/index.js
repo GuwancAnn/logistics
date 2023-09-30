@@ -5,11 +5,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import ClientHome from "./components/ClientHome";
 
 const routes = (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}></Route>{" "}
+      <Route path="/" element={<App />}></Route>
+      <Route path="/login" element={<Login></Login>} />
+      <Route path="/client" element={<ClientHome></ClientHome>} />
     </Routes>
   </BrowserRouter>
 );
