@@ -7,6 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import ClientHome from "./components/ClientHome";
+import ClientVehicle from "./components/ClientVehicle";
+import CLientContainer from "./components/ClientContainer";
+import ClientPrice from "./components/ClientPrice";
+import Invoices from "./components/Invoices";
 
 const routes = (
   <BrowserRouter>
@@ -14,6 +18,10 @@ const routes = (
       <Route path="/" element={<App />}></Route>
       <Route path="/login" element={<Login></Login>} />
       <Route path="/client" element={<ClientHome></ClientHome>} />
+      <Route path="/vehicle" element={<ClientVehicle />} />
+      <Route path="/container" element={<CLientContainer />} />
+      <Route path="/price" element={<ClientPrice></ClientPrice>} />
+      <Route path="/invoice" element={<Invoices></Invoices>} />
     </Routes>
   </BrowserRouter>
 );

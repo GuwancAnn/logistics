@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
+import { useNavigate } from "react-router-dom";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -21,6 +21,7 @@ function classNames(...classes) {
 </svg>;
 
 export default function Dropdown() {
+  const navigate = useNavigate();
   return (
     <Menu
       as="div"
@@ -47,7 +48,8 @@ export default function Dropdown() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  //onClick={() => navigate("/invoces")}
+                  href="/invoice"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
