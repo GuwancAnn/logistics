@@ -62,7 +62,7 @@ export default function Dropdown() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/paid"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
@@ -75,7 +75,7 @@ export default function Dropdown() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/partial"
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
@@ -85,21 +85,19 @@ export default function Dropdown() {
                 </a>
               )}
             </Menu.Item>
-            <form method="POST" action="#">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    type="submit"
-                    className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "block w-full px-4 py-2 text-left text-sm"
-                    )}
-                  >
-                    Unpaid nvoices
-                  </button>
-                )}
-              </Menu.Item>
-            </form>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="/unpaid"
+                  className={classNames(
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm"
+                  )}
+                >
+                  Unpaid Invoices
+                </a>
+              )}
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Transition>

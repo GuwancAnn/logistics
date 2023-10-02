@@ -11,6 +11,9 @@ import ClientVehicle from "./components/ClientVehicle";
 import CLientContainer from "./components/ClientContainer";
 import ClientPrice from "./components/ClientPrice";
 import Invoices from "./components/Invoices";
+import PaidInvoices from "./components/PaidInvoice";
+import Partial from "./components/Partial";
+import Unpaid from "./components/Unpaid";
 
 const routes = (
   <BrowserRouter>
@@ -22,6 +25,9 @@ const routes = (
       <Route path="/container" element={<CLientContainer />} />
       <Route path="/price" element={<ClientPrice></ClientPrice>} />
       <Route path="/invoice" element={<Invoices></Invoices>} />
+      <Route path="/paid" element={<PaidInvoices></PaidInvoices>} />
+      <Route path="/partial" element={<Partial></Partial>} />
+      <Route path="/unpaid" element={<Unpaid></Unpaid>} />
     </Routes>
   </BrowserRouter>
 );
