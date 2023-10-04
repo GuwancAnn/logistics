@@ -14,7 +14,7 @@ function Login() {
   };
   return (
     <>
-      <div className="container   ">
+      <div className="container m-auto  ">
         <form
           className="bg-slate-50 p-4 max-w-lg mt-8 mx-auto rounded-md border border-slate-100"
           onSubmit={LoginBtn}

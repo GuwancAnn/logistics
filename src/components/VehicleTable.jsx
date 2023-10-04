@@ -1,4 +1,12 @@
 import React from "react";
+import YesNo from "./Select/YesNo";
+import ClaimSelect from "./Select/ClaimSelect";
+import VehicleSelect from "./Select/VehicleSelect";
+import TitleSelect from "./Select/TitleSelect";
+import LocSelect from "./Select/LocSelect";
+import StatusSelect from "./Select/StatusSelect";
+import LoadingTypeSelect from "./Select/LoadingTypeSelect";
+import NotesSelect from "./Select/NotesSelect";
 function VehicleTable() {
   return (
     <>
@@ -40,11 +48,15 @@ function VehicleTable() {
             </tr>
           </thead>
           <tbody>
-            <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 ">
+            <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12">
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>{" "}
+              <td>
+                <YesNo></YesNo>
+              </td>
+              <td>
+                <ClaimSelect></ClaimSelect>
+              </td>
               <td>
                 <input
                   type="text"
@@ -133,28 +145,14 @@ function VehicleTable() {
                   id=""
                 />
               </td>
-              <td></td>
-              <td></td>
-              <td></td>
               <td>
-                {" "}
-                <input
-                  type="text"
-                  name=""
-                  className="border rounded-md w-20"
-                  id=""
-                />
+                <YesNo></YesNo>
               </td>
-              <td></td>
-              <td></td>
               <td>
-                {" "}
-                <input
-                  type="text"
-                  name=""
-                  className="border rounded-md w-20"
-                  id=""
-                />
+                <VehicleSelect></VehicleSelect>
+              </td>
+              <td>
+                <TitleSelect></TitleSelect>
               </td>
               <td>
                 {" "}
@@ -165,10 +163,38 @@ function VehicleTable() {
                   id=""
                 />
               </td>
+              <td>
+                <LocSelect></LocSelect>
+              </td>
+              <td>
+                <StatusSelect></StatusSelect>
+              </td>
+              <td>
+                {" "}
+                <input
+                  type="text"
+                  name=""
+                  className="border rounded-md w-20"
+                  id=""
+                />
+              </td>
+              <td>
+                {" "}
+                <input
+                  type="text"
+                  name=""
+                  className="border rounded-md w-20"
+                  id=""
+                />
+              </td>
               <td></td>
+              <td>
+                <LoadingTypeSelect></LoadingTypeSelect>
+              </td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td>
+                <NotesSelect></NotesSelect>
+              </td>
               <td></td>
               <td></td>
               <td></td>

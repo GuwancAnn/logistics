@@ -1,6 +1,8 @@
 import React from "react";
 import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
+import PriceTypeSelect from "./Select/PriceTypeSelect";
+import PriceStatus from "./Select/PriceStatus";
 function ClientPrice() {
   return (
     <>
@@ -23,8 +25,12 @@ function ClientPrice() {
             <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 ">
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td className="w-48">
+                <PriceTypeSelect></PriceTypeSelect>
+              </td>
+              <td>
+                <PriceStatus></PriceStatus>
+              </td>
               <td>
                 <input
                   type="text"

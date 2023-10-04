@@ -1,6 +1,7 @@
 import React from "react";
 import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
+import LocSelect from "./Select/LocSelect";
 function CLientContainer() {
   return (
     <>
@@ -43,7 +44,7 @@ function CLientContainer() {
               </tr>
             </thead>
             <tbody>
-              <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 ">
+              <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12 ">
                 <td></td>
                 <td>
                   <input
@@ -82,7 +83,9 @@ function CLientContainer() {
                     id=""
                   />
                 </td>
-                <td></td>
+                <td>
+                  <LocSelect></LocSelect>
+                </td>
                 <td>
                   {" "}
                   <input
