@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
         console.log(result);
         const token = result.access;
         localStorage.setItem("access", token);
-        setToken(true);
+        setToken(token);
         navigate("/client");
       })
       .catch((error) => {

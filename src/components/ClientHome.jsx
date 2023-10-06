@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ClientHeader from "./ClientHeader";
 import Chart from "./Chart";
 import Footer from "./Footer";
-const ClientHome = () => {
+import { useNavigate } from "react-router-dom";
+
+function ClientHome() {
   const [isActiveImage, setIsActiveImage] = useState(false);
+  const navigate = useNavigate;
 
   const handleClickImage = () => {
     setIsActiveImage(!isActiveImage);
@@ -1044,6 +1047,6 @@ const ClientHome = () => {
       <Footer></Footer>
     </>
   );
-};
+}
 
 export default ClientHome;

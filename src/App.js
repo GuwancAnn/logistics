@@ -14,7 +14,7 @@ import Unpaid from "./components/Unpaid";
 import LandingPage from "./components/LandingPage";
 
 function App() {
-  const navigate = useNavigate();
+  const navigate = useNavigate;
   const [token, setToken] = useState(false);
   useEffect(() => {
     const item = localStorage.getItem("access");
@@ -23,7 +23,6 @@ function App() {
       console.log(item);
     } else {
       setToken(false);
-      navigate("/login");
     }
   }, []);
   return (
