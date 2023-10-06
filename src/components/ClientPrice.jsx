@@ -65,7 +65,6 @@ function ClientPrice() {
                     </svg>
                   </button>
                   <button>
-                    {" "}
                     <svg
                       width="29"
                       height="28"

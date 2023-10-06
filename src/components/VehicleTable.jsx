@@ -92,7 +92,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -101,7 +100,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -110,7 +108,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -119,7 +116,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -128,7 +124,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -137,7 +132,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -155,7 +149,6 @@ function VehicleTable() {
                 <TitleSelect></TitleSelect>
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -170,7 +163,6 @@ function VehicleTable() {
                 <StatusSelect></StatusSelect>
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""
@@ -179,7 +171,6 @@ function VehicleTable() {
                 />
               </td>
               <td>
-                {" "}
                 <input
                   type="text"
                   name=""

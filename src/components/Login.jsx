@@ -1,13 +1,44 @@
 import { Checkbox } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+const Login = ({ setToken }) => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate = useNavigate();
-  const LoginBtn = () => {
-    navigate("/client");
+
+  const LoginBtn = (e) => {
+    e.preventDefault();
+    const data = {
+      username: userName,
+      password: password,
+    };
+    fetch("http://132.148.79.178/api/v1/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        const token = result.access;
+        localStorage.setItem("access", token);
+        setToken(true);
+        navigate("/client");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("An error occurred. Please try again.");
+      });
   };
-  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -15,10 +46,7 @@ function Login() {
   return (
     <>
       <div className="container m-auto  ">
-        <form
-          className="bg-slate-50 p-4 max-w-lg mt-8 mx-auto rounded-md border border-slate-100"
-          onSubmit={LoginBtn}
-        >
+        <form className="bg-slate-50 p-4 max-w-lg mt-10 mx-auto rounded-md border border-slate-100">
           <div className="   flex  items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +86,8 @@ function Login() {
               />
             </svg>
             <input
-              type="email"
+              onChange={(e) => setUserName(e.target.value)}
+              type="text"
               className=" py-3 pl-10  border-gray-200 rounded-md"
             ></input>
           </div>
@@ -81,6 +110,7 @@ function Login() {
 
             <input
               type={isPasswordVisible ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
               className=" py-3 pl-10  border-gray-200 rounded-md"
             ></input>
             <button
@@ -142,9 +172,9 @@ function Login() {
             </label>
           </div>
           <div className="flex justify-end mt-5">
-            {" "}
             <button
               onClick={LoginBtn}
+              type="submit"
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-400 "
             >
               Login
@@ -161,6 +191,6 @@ function Login() {
       </div>
     </>
   );
-}
+};
 
 export default Login;

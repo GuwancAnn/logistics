@@ -14,7 +14,7 @@ const people = [
   { id: 3, name: "Bike Towing" },
   { id: 4, name: "Single Vehicle Rate" },
   { id: 5, name: "Destination Rate" },
-  { id: 5, name: "Full Container Rate" },
+  { id: 6, name: "Full Container Rate" },
 ];
 
 function classNames(...classes) {
@@ -29,7 +29,7 @@ export default function PriceTypeSelect() {
       {({ open }) => (
         <>
           <div className="relative  h-12 w-full">
-            <Listbox.Button className="relative w-full h-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:leading-6">
+            <Listbox.Button className="relative w-full h-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-regal-blue focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:leading-6">
               <span className="flex items-center text-base">
                 <span className="ml-3 block truncate">{selected.name}</span>
               </span>
