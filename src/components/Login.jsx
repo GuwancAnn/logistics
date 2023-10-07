@@ -1,4 +1,3 @@
-import { Checkbox } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -31,7 +30,7 @@ const Login = ({ setToken }) => {
         console.log(result);
         const token = result.access;
         localStorage.setItem("access", token);
-        setToken(token);
+        setToken(true);
         navigate("/client");
       })
       .catch((error) => {

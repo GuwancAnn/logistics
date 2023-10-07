@@ -26,7 +26,7 @@ function VehicleTable() {
               <th>Make</th>
               <th>Model</th>
               <th>Color</th>
-              <th>Win</th>
+              <th>Vin</th>
               <th>Lot no</th>
               <th>Buyer Id</th>
               <th>Keys</th>

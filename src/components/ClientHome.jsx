@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import ClientHeader from "./ClientHeader";
 import Chart from "./Chart";
 import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function ClientHome() {
+function ClientHome({ setToken }) {
   const [isActiveImage, setIsActiveImage] = useState(false);
   const navigate = useNavigate;
+
+  console.log("client");
 
   const handleClickImage = () => {
     setIsActiveImage(!isActiveImage);
   };
+
   return (
     <>
       <div className="text-[#2E3A59] container mx-auto">
@@ -172,7 +175,7 @@ function ClientHome() {
               />
             </svg>
 
-            <p className="pl-[14px] ">Bike Towing</p>
+            <p className="pl-[14px] ">Destination Rate</p>
           </button>
           <button className="flex border  flex-grow w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
