@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("access");
-    if (token !== null) {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal !== null) {
       navigate("/client");
     }
   }, []);
@@ -35,7 +35,7 @@ const Login = ({ setToken }) => {
         console.log(result);
         const token = result.access;
         localStorage.setItem("access", token);
-        setToken(true);
+
         navigate("/client");
       })
       .catch((error) => {

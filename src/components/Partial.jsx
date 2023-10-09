@@ -3,10 +3,10 @@ import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 function Partial() {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("access");
-    if (token == null) {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);

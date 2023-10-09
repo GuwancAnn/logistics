@@ -5,10 +5,10 @@ import PriceTypeSelect from "./Select/PriceTypeSelect";
 import PriceStatus from "./Select/PriceStatus";
 import { useNavigate } from "react-router-dom";
 function ClientPrice() {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("access");
-    if (token == null) {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);

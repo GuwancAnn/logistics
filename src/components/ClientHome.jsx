@@ -4,13 +4,13 @@ import Chart from "./Chart";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
-function ClientHome({ setToken }) {
+const ClientHome = () => {
   const [isActiveImage, setIsActiveImage] = useState(false);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("access");
-    if (token == null) {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);
@@ -1055,6 +1055,6 @@ function ClientHome({ setToken }) {
       <Footer></Footer>
     </>
   );
-}
+};
 
 export default ClientHome;

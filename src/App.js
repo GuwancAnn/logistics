@@ -14,16 +14,13 @@ import Unpaid from "./components/Unpaid";
 import LandingPage from "./components/LandingPage";
 
 function App() {
-  const [token, setToken] = useState(false);
   const navigate = useNavigate();
-
-  console.log(token);
 
   return (
     <>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/login" element={<Login setToken={setToken}></Login>} />
+        <Route path="/login" element={<Login></Login>} />
         <Route path="/client" element={<ClientHome />} />
 
         <Route path="/vehicle" element={<ClientVehicle />} />

@@ -4,11 +4,11 @@ import VehicleTable from "./VehicleTable";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 function ClientVehicle() {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("access");
-    if (token == null) {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);
