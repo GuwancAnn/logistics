@@ -73,6 +73,12 @@ function Header() {
           <p className="w-32 font-medium text-[#9C422B] ">About</p>
           <p className="w-32 font-medium text-[#9C422B] ">Contact</p>
           <p className="w-32 font-medium text-[#9C422B] ">News</p>
+          <button
+            onClick={LoginBtn}
+            className="  lg:inline-block md:block w-[138px] lg:w-40 h-10 rounded-md border-none bg-[#9C422B] hover:bg-[#B8543A]  max-sm:mb-4 max-sm:w-28 sm:block sm:w-28 text-white"
+          >
+            Login
+          </button>
         </div>
       )}
     </>

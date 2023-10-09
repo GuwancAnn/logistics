@@ -6,7 +6,12 @@ const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    const token = localStorage.getItem("access");
+    if (token !== null) {
+      navigate("/client");
+    }
+  }, []);
   const LoginBtn = (e) => {
     e.preventDefault();
     const data = {
@@ -173,7 +178,6 @@ const Login = ({ setToken }) => {
           <div className="flex justify-end mt-5">
             <button
               onClick={LoginBtn}
-              type="submit"
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-400 "
             >
               Login

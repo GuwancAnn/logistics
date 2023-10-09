@@ -13,7 +13,7 @@ function VehicleTable() {
       <div className="container overflow-auto">
         <table className="table-auto ">
           <thead className=" ">
-            <tr className="   [&>th]:border-2 border-gray-200 [&>th]:font-normal ">
+            <tr className="  [&>th]:border-2 border-gray-200 [&>th]:font-normal ">
               <th>Photo</th>
               <th>Total photos</th>
               <th>Damage claim</th>

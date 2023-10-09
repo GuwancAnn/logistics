@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 function PaidInvoices() {
+  const navigate = useNavigate;
+  useEffect(() => {
+    const token = localStorage.getItem("access");
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <>
       <div className="container mx-auto text-regal-blue">

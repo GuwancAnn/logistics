@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import ClientHeader from "./ClientHeader";
 import Chart from "./Chart";
 import Footer from "./Footer";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ClientHome({ setToken }) {
   const [isActiveImage, setIsActiveImage] = useState(false);
   const navigate = useNavigate;
 
-  console.log("client");
+  useEffect(() => {
+    const token = localStorage.getItem("access");
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
 
   const handleClickImage = () => {
     setIsActiveImage(!isActiveImage);
@@ -19,7 +24,7 @@ function ClientHome({ setToken }) {
       <div className="text-[#2E3A59] container mx-auto">
         <ClientHeader></ClientHeader>
         <div className="flex items-center justify-between flex-wrap ">
-          <button className="flex  w-[202px] border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex-grow   mr-4 flex   border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="20"
               height="20"
@@ -35,23 +40,23 @@ function ClientHome({ setToken }) {
             </svg>
             <p className="pl-[14px] "> See invoices</p>
           </button>
-          <button className="flex border w-[202px]  mt-4 border-regal-blue justify-center text-regal-blue p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4  mt-4 border-regal-blue justify-center text-regal-blue p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Total Balance</p>
           </button>
-          <button className="flex border  w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border  flex-grow   mr-4  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Damage Claim</p>
           </button>
-          <button className="flex border w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Storage Claim</p>
           </button>
-          <button className="flex border w-[202px]  mt-4 border-regal-blue text-regal-blue p-[14px] justify-center h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4  mt-4 border-regal-blue text-regal-blue p-[14px] justify-center h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Key Missing Claim</p>
           </button>
-          <button className="flex border w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="20"
               height="20"
@@ -68,7 +73,7 @@ function ClientHome({ setToken }) {
 
             <p className="pl-[14px] "> All Containers</p>
           </button>
-          <button className="flex border w-[202px] mt-4 border-regal-blue text-regal-blue p-[14px]  justify-centerh-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4 mt-4 border-regal-blue text-regal-blue p-[14px]  justify-center h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="20"
               height="20"
@@ -84,7 +89,7 @@ function ClientHome({ setToken }) {
             </svg>
             <p className="pl-[14px] "> Inventory Report</p>
           </button>
-          <button className="flex border w-[202px] mt-4 border-regal-blue text-regal-blue p-[14px] h-12 rounded-md justify-center items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4 mt-4 border-regal-blue text-regal-blue p-[14px] h-12 rounded-md justify-center items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="20"
               height="20"
@@ -107,11 +112,11 @@ function ClientHome({ setToken }) {
 
             <p className="pl-[14px] "> Feedback</p>
           </button>
-          <button className="flex border w-[202px]  mt-4 border-regal-blue justify-center text-regal-blue p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border flex-grow   mr-4  mt-4 border-regal-blue justify-center text-regal-blue p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">!</p>
             <p className="pl-[14px] "> Complain</p>
           </button>
-          <button className="flex  w-[202px] border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex  flex-grow   mr-4  border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="20"
               height="20"
@@ -127,19 +132,19 @@ function ClientHome({ setToken }) {
             </svg>
             <p className="pl-[14px] "> Title Report</p>
           </button>
-          <button className="flex border  w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border mr-4 flex-grow     mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Shipping Rates</p>
           </button>
-          <button className="flex border  w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border mr-4 flex-grow     mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Towing Rates</p>
           </button>
-          <button className="flex flex-grow mr-4 border  w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex  border  flex-grow   mr-4  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[7px] ">Single Vehicle Rate</p>
           </button>
-          <button className="flex flex-grow mr-4 w-[202px] border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex      mr-4 border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="24"
               height="24"
@@ -160,7 +165,7 @@ function ClientHome({ setToken }) {
 
             <p className="pl-[14px] ">Bike Towing</p>
           </button>
-          <button className="flex  flex-grow mr-4 w-[202px] border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex   mr-4     border mt-4 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <svg
               width="24"
               height="24"
@@ -177,7 +182,7 @@ function ClientHome({ setToken }) {
 
             <p className="pl-[14px] ">Destination Rate</p>
           </button>
-          <button className="flex border  flex-grow w-[202px]  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
+          <button className="flex border      mr-4  mt-4 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
             <p className="text-xl font-medium ">$</p>
             <p className="pl-[14px] "> Full Cont. Rate</p>
           </button>
@@ -185,7 +190,7 @@ function ClientHome({ setToken }) {
         <div className="flex justify-start items-center mt-11">
           <button
             onClick={handleClickImage}
-            className={`flex w-[202px] border mt-4 justify-center p-[14px] h-12 rounded-md items-center mr-4
+            className={`flex  w-52  border mt-4 justify-center p-[14px] h-12 rounded-md items-center mr-4
         ${
           isActiveImage
             ? "bg-regal-blue text-white"
@@ -195,10 +200,10 @@ function ClientHome({ setToken }) {
             Image
           </button>
 
-          <button className="flex w-[202px] border border-regal-blue mr-4 mt-4 justify-center p-[14px] h-12 rounded-md items-center ">
+          <button className="flex  w-52  border border-regal-blue mr-4 mt-4 justify-center p-[14px] h-12 rounded-md items-center ">
             Track
           </button>
-          <button className="flex w-[202px]  border  border-regal-blue mr-4 mt-4 justify-center p-[14px] h-12 rounded-md items-center ">
+          <button className="flex  w-52   border  border-regal-blue mr-4 mt-4 justify-center p-[14px] h-12 rounded-md items-center ">
             Copart
           </button>
         </div>
@@ -654,25 +659,25 @@ function ClientHome({ setToken }) {
         <div className="mt-11 ">
           <h1 className="text-2xl font-semibold mb-5">Vehicle Status</h1>
           <div className="flex justify-between ">
-            <button className="border border-regal-blue p-3 text-lg rounded-md  w-40">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
               All Locations
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md w-40">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
               LA
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md w-40 ">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6 ">
               GA
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md  w-40">
+            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1    mr-6">
               LA-2
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md  w-40">
+            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1    mr-6">
               Baltimore
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md w-40 ">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6 ">
               Texas
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md w-40">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
               New Jersey
             </button>
           </div>
@@ -994,7 +999,7 @@ function ClientHome({ setToken }) {
                   <p className="">Picked Up</p>
                 </div>
                 <div className="flex items-center  mb-3">
-                  <div className="bg-yellow-400 rounded-full w-4 h-4 mr-5"></div>
+                  <div className="bg-yellow-400   rounded-full w-4 h-4 mr-5"></div>
                   <p className="">Car on the way</p>
                 </div>
                 <div className="flex items-center  mb-3">

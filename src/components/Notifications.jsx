@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   TERipple,
   TEModal,
@@ -11,7 +12,13 @@ import {
 
 const Notification = () => {
   const [showModalTopRight, setShowModalTopRight] = useState(false);
-
+  const navigate = useNavigate;
+  useEffect(() => {
+    const token = localStorage.getItem("access");
+    if (token == null) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <div>
       <div className="space-x-2 mr-6 ">
