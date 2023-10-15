@@ -3,7 +3,7 @@ import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 function Partial() {
-  const navigate = useNavigate();
+  const navigate = useNavigate;
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
@@ -56,7 +56,6 @@ function Partial() {
           <p>Showing : 1- 20 of 446</p>
         </div>
         <div className="overflow-auto">
-          {" "}
           <table className="table-auto w-full  ">
             <thead className=" ">
               <tr className=" h-12  [&>th]:border-2 border-gray-200 [&>th]:font-normal ">

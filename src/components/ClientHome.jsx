@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const ClientHome = () => {
   const [isActiveImage, setIsActiveImage] = useState(false);
   const navigate = useNavigate();
-
+  const [containerData, setContainerData] = useState();
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
@@ -208,7 +208,6 @@ const ClientHome = () => {
           </button>
         </div>
         <div className="flex items-center mt-6">
-          {" "}
           <input
             type="text"
             placeholder=" Vehicle search by vin/lot/Ar/Cont No"
@@ -659,25 +658,25 @@ const ClientHome = () => {
         <div className="mt-11 ">
           <h1 className="text-2xl font-semibold mb-5">Vehicle Status</h1>
           <div className="flex justify-between ">
-            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1  hover:bg-regal-blue hover:text-white  mr-6">
               All Locations
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1  hover:bg-regal-blue hover:text-white  mr-6">
               LA
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6 ">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1  hover:bg-regal-blue hover:text-white  mr-6 ">
               GA
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1    mr-6">
+            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1  hover:bg-regal-blue hover:text-white  mr-6">
               LA-2
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1    mr-6">
+            <button className="border border-regal-blue p-3 text-lg rounded-md  flex-1  hover:bg-regal-blue hover:text-white  mr-6">
               Baltimore
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6 ">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1   hover:bg-regal-blue hover:text-white  mr-6 ">
               Texas
             </button>
-            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1    mr-6">
+            <button className="border border-regal-blue p-3 text-lg rounded-md flex-1   hover:bg-regal-blue hover:text-white  mr-6">
               New Jersey
             </button>
           </div>
@@ -764,7 +763,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>Car on Hand</td>
                 <td>0</td>
@@ -801,7 +800,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>Manifest</td>
                 <td>0</td>
@@ -838,7 +837,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>Shipped</td>
                 <td>0</td>
@@ -875,7 +874,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>Arrived</td>
                 <td>0</td>
@@ -912,7 +911,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>Handed Over</td>
                 <td>0</td>
@@ -949,7 +948,7 @@ const ClientHome = () => {
                     />
                   </svg>
                 </td>
-              </tr>{" "}
+              </tr>
               <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                 <td>All Inventory</td>
                 <td>0</td>
@@ -990,7 +989,6 @@ const ClientHome = () => {
             </tbody>
           </table>
           <div className="flex justify-between items-center">
-            {" "}
             <div className="bg-gray-200 flex items-top w-2/5 h-[400px] border rounded-md justify-between p-5 mt-11">
               <div className="flex flex-col">
                 <p className="text-xl font-medium mb-5">Order Overview</p>
@@ -1049,7 +1047,7 @@ const ClientHome = () => {
 
               <Chart></Chart>
             </div>
-          </div>{" "}
+          </div>
         </div>
       </div>
       <Footer></Footer>

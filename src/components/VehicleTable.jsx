@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import YesNo from "./Select/YesNo";
 import ClaimSelect from "./Select/ClaimSelect";
 import VehicleSelect from "./Select/VehicleSelect";
@@ -7,7 +7,11 @@ import LocSelect from "./Select/LocSelect";
 import StatusSelect from "./Select/StatusSelect";
 import LoadingTypeSelect from "./Select/LoadingTypeSelect";
 import NotesSelect from "./Select/NotesSelect";
-function VehicleTable() {
+import PhotosModal from "./Modal/PhotosModal";
+import { Button } from "antd";
+function VehicleTable({ setVehicleData, vehicleData }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <div className="container overflow-auto">
@@ -70,7 +74,7 @@ function VehicleTable() {
                 <input
                   type="text"
                   name=""
-                  className="border rounded-md w-20"
+                  className="border rounded-md w-32"
                   id=""
                 />
               </td>
@@ -78,7 +82,7 @@ function VehicleTable() {
                 <input
                   type="text"
                   name=""
-                  className="border rounded-md w-20"
+                  className="border rounded-md w-32"
                   id=""
                 />
               </td>
@@ -152,7 +156,7 @@ function VehicleTable() {
                 <input
                   type="text"
                   name=""
-                  className="border rounded-md w-20"
+                  className="border rounded-md w-36"
                   id=""
                 />
               </td>
@@ -174,7 +178,7 @@ function VehicleTable() {
                 <input
                   type="text"
                   name=""
-                  className="border rounded-md w-20"
+                  className="border rounded-md w-32"
                   id=""
                 />
               </td>
@@ -182,7 +186,7 @@ function VehicleTable() {
               <td>
                 <LoadingTypeSelect></LoadingTypeSelect>
               </td>
-              <td></td>
+              <td className="w-32"></td>
               <td>
                 <NotesSelect></NotesSelect>
               </td>
@@ -227,6 +231,110 @@ function VehicleTable() {
                 </div>
               </td>
             </tr>
+            {vehicleData.map((item) => {
+              console.log(item.photo);
+              return (
+                <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12 [&>td]:text-center">
+                  <td>
+                    <Button
+                      onClick={() => setOpen(true)}
+                      className="hover:bg-none ring-none border-none shadow-none w-14"
+                    >
+                      <div key={item.id}>
+                        {item.photo === null ||
+                          (item.photo.length > 0 && (
+                            <img
+                              src={
+                                "http://132.148.79.178/" +
+                                `${item.photo[0].photo}`
+                              }
+                              alt="Vehicle Photo"
+                            />
+                          ))}
+
+                        {/* Render other vehicle properties */}
+                      </div>
+                    </Button>
+                    <PhotosModal
+                      open={open}
+                      setOpen={setOpen}
+                      vehicleData={vehicleData}
+                    ></PhotosModal>
+                  </td>
+                  <td>
+                    <p>2</p>
+                  </td>
+                  <td>{item.damageClaim}</td>
+                  <td>{item.claimStatus}</td>
+                  <td>{item.vcr}</td>
+                  <td>{item.reqDate}</td>
+                  <td>{item.delyDate}</td>
+                  <td>{item.days}</td>
+                  <td>{item.year}</td>
+                  <td>{item.make}</td>
+                  <td>{item.model}</td>
+                  <td>{item.color}</td>
+                  <td>{item.vin}</td>
+                  <td>{item.lotNumber}</td>
+                  <td>{item.user}</td>
+                  <td>{item.keys}</td>
+                  <td>{item.vehicleType}</td>
+                  <td>{item.title}</td>
+                  <td>{item.titleRecievedDate}</td>
+                  <td>{item.loc}</td>
+                  <td>{item.status}</td>
+                  <td>{item.containerNumber}</td>
+                  <td>{item.etaDate}</td>
+                  <td>Name</td>
+                  <td>{item.loadingType}</td>
+                  <td>
+                    <p className="w-32">{item.createdDate}</p>
+                  </td>
+                  <td>{item.note}</td>
+                  <td>Search</td>
+                  <td>
+                    <a
+                      className="text-blue-600  "
+                      href={`http:// ${item.document}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Document
+                    </a>
+                  </td>
+                  <td>
+                    {" "}
+                    <a
+                      className="text-blue-600  "
+                      href={`http:// ${item.invoice}`}
+                    >
+                      Invoice
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      href="http://"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center  hover:bg-slate-100 p-1"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 18.9999C10.3599 19.0203 8.7367 18.6663 7.254 17.9649C6.10469 17.4041 5.07265 16.6296 4.213 15.6829C3.30243 14.704 2.58547 13.5615 2.1 12.3159L2 11.9999L2.105 11.6839C2.59082 10.4393 3.30624 9.29713 4.214 8.31686C5.07334 7.37017 6.10504 6.59572 7.254 6.03486C8.73671 5.33345 10.3599 4.97947 12 4.99986C13.6401 4.9795 15.2633 5.33348 16.746 6.03486C17.8953 6.59559 18.9274 7.37005 19.787 8.31686C20.6993 9.29441 21.4165 10.4372 21.9 11.6839L22 11.9999L21.895 12.3159C20.3262 16.3996 16.3742 19.0692 12 18.9999ZM12 6.99986C8.59587 6.89319 5.47142 8.87495 4.117 11.9999C5.4712 15.125 8.59579 17.1068 12 16.9999C15.4041 17.1062 18.5284 15.1246 19.883 11.9999C18.5304 8.87344 15.4047 6.89094 12 6.99986ZM12 14.9999C10.5573 15.0094 9.30937 13.9972 9.02097 12.5836C8.73256 11.17 9.48427 9.74988 10.8154 9.19352C12.1465 8.63716 13.6852 9.09999 14.4885 10.2984C15.2919 11.4967 15.1354 13.0959 14.115 14.1159C13.5563 14.6811 12.7948 14.9994 12 14.9999Z"
+                          fill="#2E3A59"
+                        />
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

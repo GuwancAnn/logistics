@@ -1,11 +1,155 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
 import LocSelect from "./Select/LocSelect";
+import { useNavigate } from "react-router-dom";
 function CLientContainer() {
+  const navigate = useNavigate();
+  const [containerData, setContainerData] = useState([
+    // {
+    //   id: 1,
+    //   container_photo: [],
+    //   no: "1",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 1,
+    // },
+    // {
+    //   id: 2,
+    //   container_photo: [],
+    //   no: "2",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 2,
+    // },
+    // {
+    //   id: 3,
+    //   container_photo: [],
+    //   no: "3",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 3,
+    // },
+    // {
+    //   id: 4,
+    //   container_photo: [],
+    //   no: "4",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 4,
+    // },
+    // {
+    //   id: 5,
+    //   container_photo: [],
+    //   no: "5",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 5,
+    // },
+    // {
+    //   id: 6,
+    //   container_photo: [],
+    //   no: "6",
+    //   arNumber: "20561861561",
+    //   containerNumber: "gd4",
+    //   bookingNumber: "ds3",
+    //   bL: "deda",
+    //   manifest: "safsdc",
+    //   pod: "sdcsc",
+    //   loadedDate: "2023-10-10",
+    //   exportDate: "2023-10-10",
+    //   eta: "sdcsc",
+    //   invoice: "/media/container_invoice/Screenshot_6.png",
+    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
+    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
+    //   note: "sdcsdc",
+    //   user: 6,
+    // },
+  ]);
+  useEffect(() => {
+    const tokenLocal = localStorage.getItem("access");
+    if (tokenLocal == null) {
+      navigate("/login");
+    }
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://132.148.79.178/api/v1/container-list/",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+            },
+          }
+        );
+        const json = await response.json();
+        setContainerData(json);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(containerData);
   return (
     <>
-      <div className="container mx-auto  ">
+      <div className="container mx-auto key={item.id} ">
         <ClientHeader></ClientHeader>
         <div className="flex justify-between items-center mt-11 mb-6">
           <div className="flex items-center ">
@@ -21,7 +165,6 @@ function CLientContainer() {
           <p>Showing : 1- 20 of 446</p>
         </div>
         <div className="overflow-auto">
-          {" "}
           <table className="table-auto">
             <thead className=" ">
               <tr className=" h-12  [&>th]:border-2 border-gray-200 [&>th]:font-normal ">
@@ -91,7 +234,16 @@ function CLientContainer() {
                   <input
                     type="text"
                     name=""
-                    className="border rounded-md w-20"
+                    className="border rounded-md "
+                    id=""
+                  />
+                </td>
+                <td>
+                  {" "}
+                  <input
+                    type="text"
+                    name=""
+                    className="border rounded-md "
                     id=""
                   />
                 </td>
@@ -104,21 +256,11 @@ function CLientContainer() {
                     id=""
                   />
                 </td>
-                <td>
-                  {" "}
-                  <input
-                    type="text"
-                    name=""
-                    className="border rounded-md w-20"
-                    id=""
-                  />
-                </td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>
-                  {" "}
                   <div className="flex items-center ">
                     <button>
                       <svg
@@ -156,6 +298,51 @@ function CLientContainer() {
                   </div>
                 </td>
               </tr>
+              {containerData.map((item) => {
+                return (
+                  <tr
+                    key={item.id}
+                    className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12  [&>td]:text-center "
+                  >
+                    <td>{item.id}</td>
+                    <td>{item.arNumber}</td>
+                    <td>{item.container_photo}</td>
+                    <td>{item.containerNumber}</td>
+                    <td>{item.bookingNumber}</td>
+                    <td>{item.bL}</td>
+                    <td>{item.manifest}</td>
+                    <td>{item.pod}</td>
+                    <td>{item.loadedDate}</td>
+                    <td>{item.exportDate}</td>
+                    <td>{item.eta}</td>
+                    <td>{item.invoice}</td>
+                    <td>{item.invoiceAmount}</td>
+                    <td>{item.paidAmount}</td>
+                    <td>{item.note}</td>
+                    <td>
+                      <a
+                        href="http://"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center  hover:bg-slate-100 p-1"
+                      >
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 18.9999C10.3599 19.0203 8.7367 18.6663 7.254 17.9649C6.10469 17.4041 5.07265 16.6296 4.213 15.6829C3.30243 14.704 2.58547 13.5615 2.1 12.3159L2 11.9999L2.105 11.6839C2.59082 10.4393 3.30624 9.29713 4.214 8.31686C5.07334 7.37017 6.10504 6.59572 7.254 6.03486C8.73671 5.33345 10.3599 4.97947 12 4.99986C13.6401 4.9795 15.2633 5.33348 16.746 6.03486C17.8953 6.59559 18.9274 7.37005 19.787 8.31686C20.6993 9.29441 21.4165 10.4372 21.9 11.6839L22 11.9999L21.895 12.3159C20.3262 16.3996 16.3742 19.0692 12 18.9999ZM12 6.99986C8.59587 6.89319 5.47142 8.87495 4.117 11.9999C5.4712 15.125 8.59579 17.1068 12 16.9999C15.4041 17.1062 18.5284 15.1246 19.883 11.9999C18.5304 8.87344 15.4047 6.89094 12 6.99986ZM12 14.9999C10.5573 15.0094 9.30937 13.9972 9.02097 12.5836C8.73256 11.17 9.48427 9.74988 10.8154 9.19352C12.1465 8.63716 13.6852 9.09999 14.4885 10.2984C15.2919 11.4967 15.1354 13.0959 14.115 14.1159C13.5563 14.6811 12.7948 14.9994 12 14.9999Z"
+                            fill="#2E3A59"
+                          />
+                        </svg>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -56,7 +56,6 @@ function Unpaid() {
           <p>Showing : 1- 20 of 446</p>
         </div>
         <div className="overflow-auto">
-          {" "}
           <table className="table-auto w-full  ">
             <thead className=" ">
               <tr className=" h-12  [&>th]:border-2 border-gray-200 [&>th]:font-normal ">

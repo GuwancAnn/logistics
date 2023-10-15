@@ -14,8 +14,6 @@ import Unpaid from "./components/Unpaid";
 import LandingPage from "./components/LandingPage";
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <>
       <Routes>

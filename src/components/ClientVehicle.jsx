@@ -5,13 +5,105 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 function ClientVehicle() {
   const navigate = useNavigate();
-
+  const [vehicleData, setVehicleData] = useState([]);
+  //   {
+  //     id: 1,
+  //     vehicle_photo: [],
+  //     damageClaim: "DAMAGE",
+  //     claimStatus: "VCC",
+  //     vcr: "VCC",
+  //     reqDate: "2023-10-08",
+  //     delyDate: "2023-10-14",
+  //     days: 45,
+  //     year: 2015,
+  //     make: "TOYOTA",
+  //     model: "camry",
+  //     color: "WHITE",
+  //     vin: "4T1BF3EK0BU710719",
+  //     lotNumber: "35456575",
+  //     keys: "YES",
+  //     vehicleType: "SEDAN",
+  //     title: "YES",
+  //     titleRecievedDate: "2023-10-10",
+  //     loc: "NO",
+  //     status: "PAPA",
+  //     containerNumber: "4444455555",
+  //     etaDate: "2023-10-31",
+  //     loadingType: "AMAYA",
+  //     createdDate: "2023-10-10",
+  //     note: "BEST",
+  //     document: "/media/vehicle_docs/Invoice_33.pdf",
+  //     invoice: "/media/vehicle_invoice/Invoice_24.pdf",
+  //     user: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     vehicle_photo: [
+  //       {
+  //         id: 1,
+  //         photo: "/media/vehicle_photo/Screenshot_9.png",
+  //         vehicle: 2,
+  //       },
+  //       {
+  //         id: 1,
+  //         photo: "/media/vehicle_photo/Screenshot_9.png",
+  //         vehicle: 2,
+  //       },
+  //     ],
+  //     damageClaim: "wefdsf",
+  //     claimStatus: "fsdfs",
+  //     vcr: "sfsdf",
+  //     reqDate: "2023-10-09T05:29:23Z",
+  //     delyDate: "2023-10-12T05:29:24Z",
+  //     days: 2,
+  //     year: 2023,
+  //     make: "sdf",
+  //     model: "dsf",
+  //     color: "dfs",
+  //     vin: "sfs4t65treg8",
+  //     lotNumber: "fdd",
+  //     keys: "rr",
+  //     vehicleType: "ffs",
+  //     title: "ffwe",
+  //     titleRecievedDate: "2023-10-12T05:29:26Z",
+  //     loc: "ferf",
+  //     status: "ergreg",
+  //     containerNumber: "gerg",
+  //     etaDate: "2023-10-12T05:29:28Z",
+  //     loadingType: "greg",
+  //     createdDate: "2023-10-12T05:29:30Z",
+  //     note: "gergedrg",
+  //     document: "/media/vehicle_docs/Screenshot_8.png",
+  //     invoice: "/media/vehicle_invoice/Screenshot_8.png",
+  //     user: 2,
+  //   },
+  // ]
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
       navigate("/login");
     }
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://132.148.79.178/api/v1/vehicle-list/",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+            },
+          }
+        );
+        const json = await response.json();
+        setVehicleData(json);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
   }, []);
+  console.log(vehicleData);
   return (
     <>
       <div className="container mx-auto">
@@ -43,7 +135,10 @@ function ClientVehicle() {
           </div>
           <p>Showing : 1- 20 of 446</p>
         </div>
-        <VehicleTable></VehicleTable>
+        <VehicleTable
+          setVehicleData={setVehicleData}
+          vehicleData={vehicleData}
+        ></VehicleTable>
         <div className="flex justify-center mt-8">
           <svg
             width="24"
