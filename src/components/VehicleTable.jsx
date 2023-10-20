@@ -10,8 +10,10 @@ import NotesSelect from "./Select/NotesSelect";
 import PhotosModal from "./Modal/PhotosModal";
 import { Button } from "antd";
 function VehicleTable({ setVehicleData, vehicleData }) {
-  const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(null);
+  const handleClickImage = (id) => {
+    setOpen(id);
+  };
   return (
     <>
       <div className="container overflow-auto">
@@ -233,17 +235,19 @@ function VehicleTable({ setVehicleData, vehicleData }) {
             </tr>
             {vehicleData.map((item) => {
               console.log(item.photo);
+
               return (
                 <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12 [&>td]:text-center">
                   <td>
                     <Button
-                      onClick={() => setOpen(true)}
-                      className="hover:bg-none ring-none border-none shadow-none w-14"
+                      onClick={() => setOpen(item.id)}
+                      className="hover:bg-none ring-none border-none shadow-none w-14 p-0"
                     >
                       <div key={item.id}>
                         {item.photo === null ||
                           (item.photo.length > 0 && (
                             <img
+                              className="w-full"
                               src={
                                 "http://132.148.79.178/" +
                                 `${item.photo[0].photo}`
@@ -251,14 +255,13 @@ function VehicleTable({ setVehicleData, vehicleData }) {
                               alt="Vehicle Photo"
                             />
                           ))}
-
-                        {/* Render other vehicle properties */}
                       </div>
                     </Button>
+
                     <PhotosModal
-                      open={open}
+                      open={open === item.id}
                       setOpen={setOpen}
-                      vehicleData={vehicleData}
+                      vehiclePhoto={item.photo}
                     ></PhotosModal>
                   </td>
                   <td>
@@ -281,9 +284,9 @@ function VehicleTable({ setVehicleData, vehicleData }) {
                   <td>{item.vehicleType}</td>
                   <td>{item.title}</td>
                   <td>{item.titleRecievedDate}</td>
-                  <td>{item.loc}</td>
-                  <td>{item.status}</td>
-                  <td>{item.containerNumber}</td>
+                  <td>{item.loc.name}</td>
+                  <td>{item.status.title}</td>
+                  <td>{item.containerNumber.containerNumber}</td>
                   <td>{item.etaDate}</td>
                   <td>Name</td>
                   <td>{item.loadingType}</td>

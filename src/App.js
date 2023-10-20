@@ -12,6 +12,9 @@ import Partial from "./components/Partial";
 import Unpaid from "./components/Unpaid";
 
 import LandingPage from "./components/LandingPage";
+import LoadingVehicle from "./components/LoadingVehicle";
+import VehicleWeights from "./components/VehicleWeights";
+import VehicleNotes from "./components/VehicleNotes";
 
 function App() {
   return (
@@ -28,6 +31,15 @@ function App() {
         <Route path="/paid" element={<PaidInvoices></PaidInvoices>} />
         <Route path="/partial" element={<Partial></Partial>} />
         <Route path="/unpaid" element={<Unpaid></Unpaid>} />
+        <Route
+          path="/loading-vehicle"
+          element={<LoadingVehicle></LoadingVehicle>}
+        ></Route>
+        <Route
+          path="/vehicle-weight"
+          element={<VehicleWeights></VehicleWeights>}
+        ></Route>
+        <Route path="/notes" element={<VehicleNotes></VehicleNotes>}></Route>
       </Routes>{" "}
     </>
   );

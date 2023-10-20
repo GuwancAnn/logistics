@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Tabs } from "antd";
 
-const PhotoTabs = ({ vehicleData }) => {
-  console.log(vehicleData);
+const PhotoTabs = ({ vehiclePhoto }) => {
+  console.log(vehiclePhoto);
 
   return (
     <Tabs
@@ -12,21 +12,17 @@ const PhotoTabs = ({ vehicleData }) => {
         {
           label: `USA YARD PHOTOS`,
           key: 1,
-          children: vehicleData.map((item) => {
-            console.log(item.photo);
-            return item.photo?.map((photo) => {
-              console.log(photo);
-              console.log("http://132.148.79.178/" + `${photo.photo}`);
-              return (
-                <img
-                  key={photo.id}
-                  src={`http://132.148.79.178/` + `${photo.photo}`}
-                  alt="Vehicle Photo"
-                />
-              );
-            });
-          }),
+          children:
+            vehiclePhoto === null ? (
+              <p>No photo available</p>
+            ) : (
+              <img
+                src={`http://132.148.79.178/${vehiclePhoto[0].photo}`}
+                alt="Vehicle Photo"
+              />
+            ),
         },
+
         {
           label: `AUCTION PHOTOS`,
           key: 2,

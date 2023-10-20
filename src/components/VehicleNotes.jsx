@@ -4,7 +4,7 @@ import VehicleTable from "./VehicleTable";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import { useVehicle } from "./hooks/useVehicle";
-function ClientVehicle() {
+function VehicleNotes() {
   const navigate = useNavigate();
   const { vehicleData, setVehicleData } = useVehicle();
   //   {
@@ -90,42 +90,7 @@ function ClientVehicle() {
     <>
       <div className="container mx-auto">
         <ClientHeader></ClientHeader>
-        <div className="flex items-center  flex-wrap mt-11 ">
-          <button className="flex  w-[202px] border mt-4 mr-5 justify-center border-regal-blue text-regal-blue p-[14px] h-12 rounded-md  items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue">
-            <p className="pl-[14px] "> Export</p>
-          </button>
-          <button
-            onClick={() => navigate("/loading-vehicle")}
-            className="flex border w-[202px]  mt-4 mr-5 border-regal-blue justify-center text-regal-blue p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue"
-          >
-            <p className="pl-[14px] "> Loading of Vehicles</p>
-          </button>
-          <button
-            onClick={() => navigate("/vehicle-weight")}
-            className="flex border  w-[202px]  mt-4 mr-5 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue"
-          >
-            <p className="pl-[14px] ">Vehicles Weight</p>
-          </button>
-          <button
-            onClick={() => navigate("/notes")}
-            className="flex border  w-[202px]  mt-4 mr-5 border-regal-blue text-regal-blue justify-center p-[14px] h-12 rounded-md items-center  hover:fill-white hover:stroke-white hover:text-white hover:bg-regal-blue"
-          >
-            <p className="pl-[14px]  "> Notes</p>
-          </button>
-        </div>
-        <div className="flex justify-between items-center mt-11 mb-5">
-          <div className="flex items-center ">
-            <input
-              type="text"
-              placeholder=" Global Search"
-              className="w-[54.3rem] border p-[14px] h-12  border-regal-blue rounded-md"
-            />
-            <button className="border  border-regal-blue ml-4  justify-center p-[14px] h-12   rounded-md hover:bg-regal-blue hover:text-white">
-              Search
-            </button>
-          </div>
-          <p>Showing : 1- 20 of 446</p>
-        </div>
+
         <VehicleTable
           setVehicleData={setVehicleData}
           vehicleData={vehicleData}
@@ -170,4 +135,4 @@ function ClientVehicle() {
   );
 }
 
-export default ClientVehicle;
+export default VehicleNotes;

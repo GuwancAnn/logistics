@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import PhotoTabs from "./PhotoTabs";
 
-const PhotosModal = ({ open, setOpen, vehicleData }) => {
-  console.log(vehicleData);
+const PhotosModal = ({ open, setOpen, vehiclePhoto }) => {
+  //console.log(vehicleData);
 
   return (
     <>
@@ -11,12 +11,12 @@ const PhotosModal = ({ open, setOpen, vehicleData }) => {
         title="Vehicle Images"
         centered
         open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
+        onOk={() => setOpen(null)}
+        onCancel={() => setOpen(null)}
         width={1000}
         okButtonProps={{ className: "hover:bg-none", type: "default" }}
       >
-        <PhotoTabs vehicleData={vehicleData}></PhotoTabs>
+        <PhotoTabs vehiclePhoto={vehiclePhoto}></PhotoTabs>
       </Modal>
     </>
   );

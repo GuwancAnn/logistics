@@ -3,150 +3,18 @@ import ClientHeader from "./ClientHeader";
 import Footer from "./Footer";
 import LocSelect from "./Select/LocSelect";
 import { useNavigate } from "react-router-dom";
+import { useContainers } from "./hooks/useContainers";
 function CLientContainer() {
   const navigate = useNavigate();
-  const [containerData, setContainerData] = useState([
-    // {
-    //   id: 1,
-    //   container_photo: [],
-    //   no: "1",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 1,
-    // },
-    // {
-    //   id: 2,
-    //   container_photo: [],
-    //   no: "2",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 2,
-    // },
-    // {
-    //   id: 3,
-    //   container_photo: [],
-    //   no: "3",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 3,
-    // },
-    // {
-    //   id: 4,
-    //   container_photo: [],
-    //   no: "4",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 4,
-    // },
-    // {
-    //   id: 5,
-    //   container_photo: [],
-    //   no: "5",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 5,
-    // },
-    // {
-    //   id: 6,
-    //   container_photo: [],
-    //   no: "6",
-    //   arNumber: "20561861561",
-    //   containerNumber: "gd4",
-    //   bookingNumber: "ds3",
-    //   bL: "deda",
-    //   manifest: "safsdc",
-    //   pod: "sdcsc",
-    //   loadedDate: "2023-10-10",
-    //   exportDate: "2023-10-10",
-    //   eta: "sdcsc",
-    //   invoice: "/media/container_invoice/Screenshot_6.png",
-    //   invoiceAmount: "/media/container_invoice_amount/Screenshot_12.png",
-    //   paidAmount: "/media/container_paid_amount/Screenshot_12.png",
-    //   note: "sdcsdc",
-    //   user: 6,
-    // },
-  ]);
+
+  const { containerData } = useContainers();
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
       navigate("/login");
     }
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://132.148.79.178/api/v1/container-list/",
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
-            },
-          }
-        );
-        const json = await response.json();
-        setContainerData(json);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
   }, []);
-  console.log(containerData);
+
   return (
     <>
       <div className="container mx-auto key={item.id} ">
