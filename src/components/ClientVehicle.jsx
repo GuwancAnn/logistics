@@ -85,7 +85,8 @@ function ClientVehicle() {
       navigate("/login");
     }
   }, []);
-
+  const vehicle = vehicleData?.vehicle ?? [];
+  console.log(vehicle);
   return (
     <>
       <div className="container mx-auto">
@@ -128,7 +129,7 @@ function ClientVehicle() {
         </div>
         <VehicleTable
           setVehicleData={setVehicleData}
-          vehicleData={vehicleData}
+          vehicle={vehicle}
         ></VehicleTable>
         <div className="flex justify-center mt-8">
           <svg

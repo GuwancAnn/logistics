@@ -10,7 +10,7 @@ export const useStatus = () => {
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
           },
         }
       );

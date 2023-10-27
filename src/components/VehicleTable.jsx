@@ -9,11 +9,12 @@ import LoadingTypeSelect from "./Select/LoadingTypeSelect";
 import NotesSelect from "./Select/NotesSelect";
 import PhotosModal from "./Modal/PhotosModal";
 import { Button } from "antd";
-function VehicleTable({ setVehicleData, vehicleData }) {
+function VehicleTable({ setVehicleData, vehicle }) {
   const [open, setOpen] = useState(null);
   const handleClickImage = (id) => {
     setOpen(id);
   };
+  console.log(vehicle);
   return (
     <>
       <div className="container overflow-auto">
@@ -233,7 +234,7 @@ function VehicleTable({ setVehicleData, vehicleData }) {
                 </div>
               </td>
             </tr>
-            {vehicleData.map((item) => {
+            {vehicle.map((item) => {
               console.log(item.photo);
 
               return (

@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 export const useVehicle = () => {
-  const [vehicleData, setVehicleData] = useState([]);
+  const [vehicleData, setVehicleData] = useState({});
 
   const fetchData = async () => {
+    console.log("ok");
     try {
-      const response = await fetch(
+      const response = await axios.get(
         "http://132.148.79.178/api/v1/vehicle-list/",
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
           },
         }
       );
-      const json = await response.json();
-      setVehicleData(json);
+      setVehicleData(response.data);
     } catch (error) {
       console.error(error);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
