@@ -15,6 +15,7 @@ import LandingPage from "./components/LandingPage";
 import LoadingVehicle from "./components/LoadingVehicle";
 import VehicleWeights from "./components/VehicleWeights";
 import VehicleNotes from "./components/VehicleNotes";
+import VinInformaition from "./components/VinInformation";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           path="/vehicle-weight"
           element={<VehicleWeights></VehicleWeights>}
         ></Route>
+        <Route path="/vin" element={<VinInformaition />}></Route>
         <Route path="/notes" element={<VehicleNotes></VehicleNotes>}></Route>
       </Routes>{" "}
     </>

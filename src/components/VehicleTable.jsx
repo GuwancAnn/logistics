@@ -9,8 +9,10 @@ import LoadingTypeSelect from "./Select/LoadingTypeSelect";
 import NotesSelect from "./Select/NotesSelect";
 import PhotosModal from "./Modal/PhotosModal";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 function VehicleTable({ setVehicleData, vehicle }) {
   const [open, setOpen] = useState(null);
+  const navigate = useNavigate();
   const handleClickImage = (id) => {
     setOpen(id);
   };
@@ -266,7 +268,7 @@ function VehicleTable({ setVehicleData, vehicle }) {
                     ></PhotosModal>
                   </td>
                   <td>
-                    <p>2</p>
+                    <p>{item.photo?.length ?? 0}</p>
                   </td>
                   <td>{item.damageClaim}</td>
                   <td>{item.claimStatus}</td>
@@ -278,7 +280,15 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   <td>{item.make}</td>
                   <td>{item.model}</td>
                   <td>{item.color}</td>
-                  <td>{item.vin}</td>
+                  <td>
+                    {" "}
+                    <button
+                      onClick={() => navigate("/vin")}
+                      className="text-blue-600"
+                    >
+                      {item.vin}
+                    </button>
+                  </td>
                   <td>{item.lotNumber}</td>
                   <td>{item.user}</td>
                   <td>{item.keys}</td>
