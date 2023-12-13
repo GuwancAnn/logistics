@@ -2,21 +2,7 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
-const people = [
-  {
-    id: 1,
-    name: "On Hand",
-  },
-  {
-    id: 2,
-    name: "Manifest",
-  },
-  { id: 3, name: "On The Way" },
-  { id: 4, name: "Shipped" },
-  { id: 5, name: "Picked Up" },
-  { id: 6, name: "Arrived" },
-  { id: 7, name: "Handed Over" },
-];
+const people = [];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

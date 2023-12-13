@@ -1,36 +1,49 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
-const people = [
-  {
-    id: 1,
-    name: "Sedan",
-  },
-  {
-    id: 2,
-    name: "Van",
-  },
-  { id: 3, name: "Pickup" },
-  { id: 4, name: "Truck" },
-  { id: 5, name: "Motorcycle" },
-];
-
+import axios from "axios";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function VehicleSelect() {
+export default function VehicleSelect({ onValueChange }) {
+  const [people, setPeople] = useState([]);
   const [selected, setSelected] = useState(people);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("ok");
+      try {
+        const response = await axios.get(
+          "http://132.148.79.178/api/v1/vehicleType/",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+            },
+          }
+        );
+        setPeople(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+  const handleChangeType = (selected) => {
+    onValueChange(selected);
+    console.log(selected);
+  };
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selected} onChange={handleChangeType}>
       {({ open }) => (
         <>
           <div className="relative  h-12 w-40">
             <Listbox.Button className="relative w-full h-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-regal-blue focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:leading-6">
               <span className="flex items-center text-base">
-                <span className="ml-3 block truncate">{selected.name}</span>
+                <span className="ml-3 block truncate">
+                  {selected.vehicleType}
+                </span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <ChevronUpDownIcon
@@ -68,7 +81,7 @@ export default function VehicleSelect() {
                               "ml-3 block truncate"
                             )}
                           >
-                            {person.name}
+                            {person.vehicleType}
                           </span>
                         </div>
 

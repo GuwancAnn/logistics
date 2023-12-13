@@ -11,9 +11,13 @@ const ClientHome = () => {
   const [isActiveImage, setIsActiveImage] = useState(false);
   const [filteredLocationData, setFilteredLocationData] = useState({});
   const [AllLocActive, setAllLocActive] = useState(true);
+  const [SearchData, setSearchData] = useState("");
+  const [locationStatusCountData, setLocationStatusCountData] = useState();
+
   const navigate = useNavigate();
-  const { vehicleData } = useVehicle();
+  const { vehicleData, setVehicleData } = useVehicle();
   const { statusData } = useStatus();
+
   // const uniqueLocationId = [...new Set(vehicleData.map((item) => item.loc.id))];
   //
   useEffect(() => {
@@ -21,14 +25,54 @@ const ClientHome = () => {
     if (tokenLocal == null) {
       navigate("/login");
     }
+
+    const LocationStatusCountF = () => {
+      fetch(`http://132.148.79.178/api/v1/status-location-count/`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response data here
+          setLocationStatusCountData(data);
+          console.log(data);
+          setAllLocActive(true);
+        })
+        .catch((error) => {
+          // Handle any errors here
+          console.error(error);
+        });
+    };
+    LocationStatusCountF();
   }, []);
 
   const handleClickImage = () => {
     setIsActiveImage(!isActiveImage);
   };
   const filterLocation = (id) => {
-    if (id === 0) {
-      fetch(`http://132.148.79.178/api/v1/vehicle-list/?location=`, {
+    console.log(id);
+    if (id == 0) {
+      fetch(`http://132.148.79.178/api/v1/status-location-count/`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response data here
+          setLocationStatusCountData(data);
+          console.log(data);
+          setAllLocActive(true);
+        })
+        .catch((error) => {
+          // Handle any errors here
+          console.error(error);
+        });
+    } else {
+      fetch(`http://132.148.79.178/api/v1/location-detail/${id}`, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
@@ -39,16 +83,15 @@ const ClientHome = () => {
           // Handle the response data here
           setFilteredLocationData(data);
           console.log(data);
-          setAllLocActive(true);
+          setAllLocActive(false);
         })
         .catch((error) => {
           // Handle any errors here
           console.error(error);
         });
-    } else {
     }
-    console.log(id);
-    fetch(`http://132.148.79.178/api/v1/vehicle-list/?location=${id}`, {
+
+    fetch(`http://132.148.79.178/api/v1/location-detail/${id}`, {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
@@ -58,7 +101,7 @@ const ClientHome = () => {
       .then((data) => {
         // Handle the response data here
         setFilteredLocationData(data);
-
+        console.log(data);
         setAllLocActive(false);
       })
       .catch((error) => {
@@ -66,12 +109,11 @@ const ClientHome = () => {
         console.error(error);
       });
   };
-  console.log(vehicleData);
-  const vehicle = vehicleData?.vehicle ?? [];
-  console.log(vehicle);
 
-  const LocationArray = vehicleData?.location ?? [];
-  const statusArray = vehicleData?.status ?? [];
+  const vehicle = vehicleData?.results ?? [];
+
+  const LocationArray = locationStatusCountData?.location ?? [];
+  const statusArray = locationStatusCountData?.status ?? [];
   const FilteredLocArray = filteredLocationData?.status ?? [];
   console.log(statusArray);
   const allStatusData = [
@@ -131,7 +173,27 @@ const ClientHome = () => {
     },
     ...LocationArray,
   ];
-  console.log(filteredLocationData);
+  console.log(FilteredLocArray);
+  const Search = () => {
+    fetch(`http://132.148.79.178/api/v1/vehicle-list/?search=${SearchData}`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEyNjM3NjEwLCJpYXQiOjE2OTcwODU2MTAsImp0aSI6ImI5M2NjMGNlNzBkNDQ3ZWU4YjE4MjhkYzM4MGFhYmZkIiwidXNlcl9pZCI6MX0.BAjC4rd4uZ8IVr-b-0B9F8kHx1UWnIojaHMbNqots6E",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data here
+        setVehicleData(data);
+        console.log(data);
+        navigate("/vehicle");
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(error);
+      });
+  };
+
   return (
     <>
       <div className="text-[#2E3A59] container mx-auto">
@@ -326,8 +388,12 @@ const ClientHome = () => {
             type="text"
             placeholder=" Vehicle search by vin/lot/Ar/Cont No"
             className="w-2/3 border p-[14px] h-12  border-regal-blue rounded-md"
+            onChange={(e) => setSearchData(e.target.value)}
           />
-          <button className="border  border-regal-blue ml-4  justify-center p-[14px] h-12   rounded-md hover:bg-regal-blue hover:text-white">
+          <button
+            onClick={Search}
+            className="border  border-regal-blue ml-4  justify-center p-[14px] h-12   rounded-md hover:bg-regal-blue hover:text-white"
+          >
             Search
           </button>
         </div>
@@ -336,7 +402,6 @@ const ClientHome = () => {
           <h1 className="text-2xl font-semibold mb-5">Vehicle Status</h1>
           <div className="flex justify-between ">
             {allLocationData.map((loc) => {
-              console.log(loc);
               return (
                 <button
                   onClick={() => filterLocation(loc.id)}
@@ -349,7 +414,7 @@ const ClientHome = () => {
           </div>
           <table className="table-auto w-full text-center mt-6">
             <thead className="h-12 bg-gray-300  border-gray-400  ">
-              <tr className="">
+              <tr>
                 <th>Sort type</th>
                 <th>Quantity</th>
                 <th>Inventory</th>
@@ -361,8 +426,13 @@ const ClientHome = () => {
                 ? allStatusData.map((a) => {
                     return (
                       <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
-                        <td>{a.title}</td>
-                        <td>{a.qty}</td>
+                        <td>
+                          <p>{a.title}</p>
+                        </td>
+                        <td>
+                          {" "}
+                          <p>{a.qty}</p>
+                        </td>
                         <td>
                           <div className="flex justify-center items-center ">
                             <svg
@@ -403,7 +473,7 @@ const ClientHome = () => {
                     return (
                       <tr className="hover:cursor-pointer border hover:bg-gray-200 h-10">
                         <td>{st.title}</td>
-                        <td>{st.qty}</td>
+                        <td>{st.count}</td>
                         <td>
                           <div className="flex justify-center items-center ">
                             <svg

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import YesNo from "./Select/YesNo";
 import ClaimSelect from "./Select/ClaimSelect";
 import VehicleSelect from "./Select/VehicleSelect";
@@ -9,14 +9,352 @@ import LoadingTypeSelect from "./Select/LoadingTypeSelect";
 import NotesSelect from "./Select/NotesSelect";
 import PhotosModal from "./Modal/PhotosModal";
 import { Button } from "antd";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function VehicleTable({ setVehicleData, vehicle }) {
   const [open, setOpen] = useState(null);
+  const [vrc, setVrc] = useState("");
+  const [reqDate, setReqDate] = useState("");
+  const [delyDate, setDelyDate] = useState("");
+  const [year, setYear] = useState("");
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [vin, setVin] = useState("");
+  const [lot, setLot] = useState("");
+  const [recivedDate, setRecivedDate] = useState("");
+  const [containerNo, setContainerNo] = useState("");
+  const [etaDate, setEtaDate] = useState("");
   const navigate = useNavigate();
+
+  const handleChange = async (selected) => {
+    console.log("ok");
+
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?damageClaim=${selected.damageClaim}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    console.log(selected.damageClaim);
+  };
+  const handleChangeClaim = async (selected) => {
+    console.log("ok");
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?claimStatus=${selected.claimStatus}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChangeType = async (selected) => {
+    console.log("ok");
+    console.log(selected);
+
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?vehicleType=${selected.vehicleType}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChangeTitle = async (selected) => {
+    console.log("ok");
+    console.log(selected);
+
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?title=${selected.title}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChangeLoc = async (selected) => {
+    console.log("ok");
+    console.log(selected);
+
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?loc=${selected.loc}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChangeloadingType = async (selected) => {
+    console.log("ok");
+    console.log(selected);
+
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?loadingType=${selected.loadingType}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const VrcFiltr = async () => {
+    console.log(vrc);
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?vcr=${vrc}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ReqFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?req=${reqDate}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const DelyFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?delyDate=${delyDate}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const YearFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?year=${year}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const MakeFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?make=${make}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ModelFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?model=${model}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ColorFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?color=${color}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const VinFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?vin=${vin}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const LotFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?lotNumber=${lot}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const RecivedFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?titleRecievedDate=${recivedDate}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ContainerFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?containerNumber=${containerNo}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const EtaDateFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/vehicle-list/?etaDate=${etaDate}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setVehicleData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleClickImage = (id) => {
     setOpen(id);
   };
-  console.log(vehicle);
+
   return (
     <>
       <div className="container overflow-auto">
@@ -61,10 +399,10 @@ function VehicleTable({ setVehicleData, vehicle }) {
               <td></td>
               <td></td>
               <td>
-                <YesNo></YesNo>
+                <YesNo onValueChange={handleChange}></YesNo>
               </td>
               <td>
-                <ClaimSelect></ClaimSelect>
+                <ClaimSelect onValueChange={handleChangeClaim}></ClaimSelect>
               </td>
               <td>
                 <input
@@ -72,23 +410,29 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-12"
                   id=""
+                  onChange={(e) => setVrc(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && VrcFiltr()}
                 />
               </td>
               <td>
                 {" "}
                 <input
-                  type="text"
+                  type="date"
                   name=""
-                  className="border rounded-md w-32"
+                  className="border rounded-md w-34"
                   id=""
+                  onChange={(e) => setReqDate(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && ReqFiltr()}
                 />
               </td>
               <td>
                 <input
-                  type="text"
+                  type="date"
                   name=""
-                  className="border rounded-md w-32"
+                  className="border rounded-md w-34"
                   id=""
+                  onChange={(e) => setDelyDate(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && DelyFiltr()}
                 />
               </td>
               <td></td>
@@ -98,6 +442,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setYear(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && YearFiltr()}
                 />
               </td>
               <td>
@@ -106,6 +452,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setMake(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && MakeFiltr()}
                 />
               </td>
               <td>
@@ -114,6 +462,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setModel(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && ModelFiltr()}
                 />
               </td>
               <td>
@@ -122,6 +472,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setColor(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && ColorFiltr()}
                 />
               </td>
               <td>
@@ -130,6 +482,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-44"
                   id=""
+                  onChange={(e) => setVin(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && VinFiltr()}
                 />
               </td>
               <td>
@@ -138,6 +492,8 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setLot(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && LotFiltr()}
                 />
               </td>
               <td>
@@ -152,21 +508,23 @@ function VehicleTable({ setVehicleData, vehicle }) {
                 <YesNo></YesNo>
               </td>
               <td>
-                <VehicleSelect></VehicleSelect>
+                <VehicleSelect onValueChange={handleChangeType}></VehicleSelect>
               </td>
               <td>
-                <TitleSelect></TitleSelect>
+                <TitleSelect onValueChange={handleChangeTitle}></TitleSelect>
               </td>
               <td>
                 <input
-                  type="text"
+                  type="date"
                   name=""
                   className="border rounded-md w-36"
                   id=""
+                  onChange={(e) => setRecivedDate(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && RecivedFiltr()}
                 />
               </td>
               <td>
-                <LocSelect></LocSelect>
+                <LocSelect onValueChange={handleChangeLoc}></LocSelect>
               </td>
               <td>
                 <StatusSelect></StatusSelect>
@@ -177,19 +535,25 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   name=""
                   className="border rounded-md w-20"
                   id=""
+                  onChange={(e) => setContainerNo(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && ContainerFiltr()}
                 />
               </td>
               <td>
                 <input
-                  type="text"
+                  type="date"
                   name=""
                   className="border rounded-md w-32"
                   id=""
+                  onChange={(e) => setEtaDate(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && EtaDateFiltr()}
                 />
               </td>
               <td></td>
               <td>
-                <LoadingTypeSelect></LoadingTypeSelect>
+                <LoadingTypeSelect
+                  onValueChange={handleChangeloadingType}
+                ></LoadingTypeSelect>
               </td>
               <td className="w-32"></td>
               <td>
@@ -215,7 +579,6 @@ function VehicleTable({ setVehicleData, vehicle }) {
                     </svg>
                   </button>
                   <button>
-                    {" "}
                     <svg
                       width="29"
                       height="28"
@@ -299,7 +662,7 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   <td>{item.status.title}</td>
                   <td>{item.containerNumber.containerNumber}</td>
                   <td>{item.etaDate}</td>
-                  <td>Name</td>
+                  <td>{item.customerName}</td>
                   <td>{item.loadingType}</td>
                   <td>
                     <p className="w-32">{item.createdDate}</p>
@@ -309,7 +672,7 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   <td>
                     <a
                       className="text-blue-600  "
-                      href={`http:// ${item.document}`}
+                      href={"http://132.148.79.178/" + `${item.document}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -319,8 +682,10 @@ function VehicleTable({ setVehicleData, vehicle }) {
                   <td>
                     {" "}
                     <a
+                      rel="noopener noreferrer"
+                      target="_blank"
                       className="text-blue-600  "
-                      href={`http:// ${item.invoice}`}
+                      href={"http://132.148.79.178/" + `${item.invoice}`}
                     >
                       Invoice
                     </a>

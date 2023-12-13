@@ -4,17 +4,110 @@ import Footer from "./Footer";
 import LocSelect from "./Select/LocSelect";
 import { useNavigate } from "react-router-dom";
 import { useContainers } from "./hooks/useContainers";
+import axios from "axios";
 function CLientContainer() {
   const navigate = useNavigate();
+  const [arNumber, setArNumber] = useState("");
+  const [conNumber, setConNumber] = useState("");
+  const [bookNumber, setBookNumber] = useState("");
+  const [manifest, setManifest] = useState("");
 
-  const { containerData } = useContainers();
+  const { containerData, setContainerData } = useContainers();
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);
+  const container = containerData?.results ?? [];
+  const handleChangeLoc = async (selected) => {
+    console.log("ok");
+    console.log(selected);
 
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/container-list/?pod=${selected.pod}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setContainerData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ArFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/container-list/?arNumber=${arNumber}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setContainerData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ConFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/container-list/?containerNumber=${conNumber}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setContainerData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const BookFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/container-list/?bookingNumber=${bookNumber}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setContainerData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const ManifestFiltr = async () => {
+    try {
+      const response = await axios.get(
+        `http://132.148.79.178/api/v1/container-list/?manifest=${manifest}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+          },
+        }
+      );
+      setContainerData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <div className="container mx-auto key={item.id} ">
@@ -63,6 +156,8 @@ function CLientContainer() {
                     name=""
                     className="border rounded-md w-44"
                     id=""
+                    onChange={(e) => setArNumber(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && ArFiltr()}
                   />
                 </td>
                 <td></td>
@@ -73,6 +168,8 @@ function CLientContainer() {
                     name=""
                     className="border rounded-md w-36"
                     id=""
+                    onChange={(e) => setConNumber(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && ConFiltr()}
                   />
                 </td>
                 <td>
@@ -82,6 +179,8 @@ function CLientContainer() {
                     name=""
                     className="border rounded-md w-36"
                     id=""
+                    onChange={(e) => setBookNumber(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && BookFiltr()}
                   />
                 </td>
                 <td></td>
@@ -92,10 +191,12 @@ function CLientContainer() {
                     name=""
                     className="border rounded-md w-20"
                     id=""
+                    onChange={(e) => setManifest(e.target.value)}
+                    onKeyPress={(e) => e.key === "Enter" && ManifestFiltr()}
                   />
                 </td>
                 <td>
-                  <LocSelect></LocSelect>
+                  <LocSelect onValueChange={handleChangeLoc}></LocSelect>
                 </td>
                 <td>
                   {" "}
@@ -166,7 +267,7 @@ function CLientContainer() {
                   </div>
                 </td>
               </tr>
-              {containerData.map((item) => {
+              {container.map((item) => {
                 return (
                   <tr
                     key={item.id}
@@ -183,7 +284,16 @@ function CLientContainer() {
                     <td>{item.loadedDate}</td>
                     <td>{item.exportDate}</td>
                     <td>{item.eta}</td>
-                    <td>{item.invoice}</td>
+                    <td>
+                      <a
+                        href={"http://132.148.79.178/" + `${item.invoice}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center text-blue-600    hover:bg-slate-100 p-1"
+                      >
+                        Invoice
+                      </a>
+                    </td>
                     <td>{item.invoiceAmount}</td>
                     <td>{item.paidAmount}</td>
                     <td>{item.note}</td>

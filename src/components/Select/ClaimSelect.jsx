@@ -1,35 +1,51 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-
-const people = [
-  {
-    id: 1,
-    name: "Rejected",
-  },
-  {
-    id: 2,
-    name: "Approved",
-  },
-  { id: 3, name: "Pending" },
-];
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ClaimSelect() {
+export default function ClaimSelect({ onValueChange }) {
+  const [people, setPeople] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("ok");
+      try {
+        const response = await axios.get(
+          "http://132.148.79.178/api/v1/claim-status/",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzODUwMzI5LCJpYXQiOjE2OTgyOTgzMjksImp0aSI6Ijg1ODU1ZDYxZjRlYTQ3OTliNjg5MTZjYTFkZTA3YTY0IiwidXNlcl9pZCI6MX0.Gor64Q4kKKaVJnYn21wjKuPxa4oipX7V78AxADKV5Mk",
+            },
+          }
+        );
+        setPeople(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const [selected, setSelected] = useState(people);
+  const handleChangeClaim = (selected) => {
+    onValueChange(selected);
+    console.log(selected);
+  };
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selected} onChange={handleChangeClaim}>
       {({ open }) => (
         <>
           <div className="relative  h-12 w-40 text-base">
             <Listbox.Button className="relative w-full h-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-regal-blue focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
                 <span className="ml-3 block truncate text-base">
-                  {selected.name}
+                  {selected.claimStatus}
                 </span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -68,7 +84,7 @@ export default function ClaimSelect() {
                               "ml-3 block truncate"
                             )}
                           >
-                            {person.name}
+                            {person.claimStatus}
                           </span>
                         </div>
 

@@ -7,85 +7,15 @@ import { useVehicle } from "./hooks/useVehicle";
 function ClientVehicle() {
   const navigate = useNavigate();
   const { vehicleData, setVehicleData } = useVehicle();
-  //   {
-  //     id: 1,
-  //     vehicle_photo: [],
-  //     damageClaim: "DAMAGE",
-  //     claimStatus: "VCC",
-  //     vcr: "VCC",
-  //     reqDate: "2023-10-08",
-  //     delyDate: "2023-10-14",
-  //     days: 45,
-  //     year: 2015,
-  //     make: "TOYOTA",
-  //     model: "camry",
-  //     color: "WHITE",
-  //     vin: "4T1BF3EK0BU710719",
-  //     lotNumber: "35456575",
-  //     keys: "YES",
-  //     vehicleType: "SEDAN",
-  //     title: "YES",
-  //     titleRecievedDate: "2023-10-10",
-  //     loc: "NO",
-  //     status: "PAPA",
-  //     containerNumber: "4444455555",
-  //     etaDate: "2023-10-31",
-  //     loadingType: "AMAYA",
-  //     createdDate: "2023-10-10",
-  //     note: "BEST",
-  //     document: "/media/vehicle_docs/Invoice_33.pdf",
-  //     invoice: "/media/vehicle_invoice/Invoice_24.pdf",
-  //     user: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     vehicle_photo: [
-  //       {
-  //         id: 1,
-  //         photo: "/media/vehicle_photo/Screenshot_9.png",
-  //         vehicle: 2,
-  //       },
-  //       {
-  //         id: 1,
-  //         photo: "/media/vehicle_photo/Screenshot_9.png",
-  //         vehicle: 2,
-  //       },
-  //     ],
-  //     damageClaim: "wefdsf",
-  //     claimStatus: "fsdfs",
-  //     vcr: "sfsdf",
-  //     reqDate: "2023-10-09T05:29:23Z",
-  //     delyDate: "2023-10-12T05:29:24Z",
-  //     days: 2,
-  //     year: 2023,
-  //     make: "sdf",
-  //     model: "dsf",
-  //     color: "dfs",
-  //     vin: "sfs4t65treg8",
-  //     lotNumber: "fdd",
-  //     keys: "rr",
-  //     vehicleType: "ffs",
-  //     title: "ffwe",
-  //     titleRecievedDate: "2023-10-12T05:29:26Z",
-  //     loc: "ferf",
-  //     status: "ergreg",
-  //     containerNumber: "gerg",
-  //     etaDate: "2023-10-12T05:29:28Z",
-  //     loadingType: "greg",
-  //     createdDate: "2023-10-12T05:29:30Z",
-  //     note: "gergedrg",
-  //     document: "/media/vehicle_docs/Screenshot_8.png",
-  //     invoice: "/media/vehicle_invoice/Screenshot_8.png",
-  //     user: 2,
-  //   },
-  // ]
+
   useEffect(() => {
     const tokenLocal = localStorage.getItem("access");
     if (tokenLocal == null) {
       navigate("/login");
     }
   }, []);
-  const vehicle = vehicleData?.vehicle ?? [];
+  console.log(vehicleData);
+  const vehicle = vehicleData?.results ?? [];
   console.log(vehicle);
   return (
     <>

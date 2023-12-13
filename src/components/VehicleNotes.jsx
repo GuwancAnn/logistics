@@ -94,7 +94,7 @@ function VehicleNotes() {
       navigate("/login");
     }
   }, []);
-
+  const vehicle = vehicleData?.vehicle ?? [];
   return (
     <>
       <div className="container mx-auto">
@@ -312,11 +312,14 @@ function VehicleNotes() {
                   </div>
                 </td>
               </tr>
-              {vehicleData.map((item) => {
+              {vehicle.map((item) => {
                 console.log(item.photo);
 
                 return (
-                  <tr className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12 [&>td]:text-center">
+                  <tr
+                    key={item.id}
+                    className="[&>td]:border-2 border-gray-300 [&>td]:px-2 [&>td]:h-20 [&>td>input]:h-12 [&>td]:text-center"
+                  >
                     <td>{item.damageClaim}</td>
                     <td>{item.claimStatus}</td>
                     <td>{item.vcr}</td>
